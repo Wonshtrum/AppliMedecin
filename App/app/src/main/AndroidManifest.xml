@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.applimedecin">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/Doc2Doc"
+        android:roundIcon="@mipmap/ic_logo"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainTest"></activity>
+        <activity android:name=".AnnoncesActivity"></activity>
+        <activity android:name=".FormulaireRemplacantActivityA"></activity>
+        <activity android:name=".FormulaireRemplacantActivityB"></activity>
+        <activity android:name=".FormulaireRemplacantActivityC"></activity>
+        <activity android:name=".FormulaireRemplacantActivityD"></activity>
+        <activity android:name=".FormulaireRemplacantActivityE"></activity>
+        <activity android:name=".FormulaireAutreAActivity"></activity>
+        <activity android:name=".FormulaireAutreBActivity"></activity>
+        <activity android:name=".FormulaireAutreCActivity"></activity>
+        <activity android:name=".FormulaireAutreDActivity"></activity>
+        <activity android:name=".FormulaireAutreEActivity"></activity>
+        <activity android:name=".FormulaireAutreFActivity"></activity>
+        <activity android:name=".FormulaireAutreGActivity"></activity>
+        <activity android:name=".FormulaireAutreHActivity"></activity>
+        <activity android:name=".FormulaireActivity"></activity>
+        <activity android:name=".AnnonceActivity"></activity>
+        <activity android:name=".FormulaireAdminActivity"></activity>
+        <activity android:name=".ConnexionActivity"></activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+</manifest>

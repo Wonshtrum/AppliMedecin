@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutFormulaireAutreB"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormulaireAutreBActivity">
+
+    <TextView
+        android:id="@+id/textEtapeB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Etape 2 sur 8"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarEtapeB"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300sp"
+        android:layout_height="33sp"
+        android:layout_marginTop="20dp"
+        android:progress="24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEtapeB" />
+
+
+    <TextView
+        android:id="@+id/textTitreEtapeB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Séléctionner une date de début de période"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeB" />
+
+    <CalendarView
+        android:id="@+id/calendarViewDebut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minDate="01/12/2019"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeB" />
+
+    <Button
+        android:id="@+id/boutonSuivantB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="300dp"
+        android:text="Suivant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeB" />
+
+    <!--    <TextView-->
+    <!--        android:text="Adresse-mail:"-->
+    <!--        android:layout_width="109dp"-->
+    <!--        android:layout_height="21dp" android:id="@+id/textViewMail"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.498"-->
+    <!--        app:layout_constraintHorizontal_bias="0.04"-->
+    <!--        android:textAlignment="center" android:textSize="16sp"/>-->
+    <!--    <EditText-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:inputType="textEmailAddress"-->
+    <!--        android:ems="10"-->
+    <!--        android:hint="exemple@mail.com"-->
+    <!--        android:id="@+id/editTextMail" tools:layout_editor_absoluteY="189dp" tools:layout_editor_absoluteX="109dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.49"-->
+    <!--        app:layout_constraintHorizontal_bias="0.60"-->
+    <!--        />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutFormulaireAutreE"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FormulaireAutreEActivity">
+
+
+    <TextView
+        android:id="@+id/textEtapeE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Etape 5 sur 8"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBarEtapeE"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300sp"
+        android:layout_height="33sp"
+        android:layout_marginTop="20dp"
+        android:progress="60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textEtapeE" />
+
+    <TextView
+        android:id="@+id/textTitreEtapeE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Jour(s) travaillé(s)"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeE" />
+
+
+    <TextView
+        android:id="@+id/textViewLundi"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="17dp"
+        android:text="L"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeE" />
+
+    <CheckBox
+        android:id="@+id/checkBoxLundi"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesMardi1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxMardi" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesLundi1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesLundi2"
+        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeE" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesLundi2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeE" />
+
+    <TextView
+        android:id="@+id/textViewMardi"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="M"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLundi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMardi"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesLundi1"
+        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeE" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesMardi1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesMardi2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesLundi1" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesMardi2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesLundi2" />
+
+    <TextView
+        android:id="@+id/textViewMercredi"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="M"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMardi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxMercredi"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesMercredi1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxLundi" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesMercredi1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesMercredi2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesMardi1" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesMercredi2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesMardi2" />
+
+    <TextView
+        android:id="@+id/textViewJeudi"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="J"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMercredi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxJeudi"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesJeudi1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxMercredi" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesJeudi1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesJeudi2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesMercredi1" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesJeudi2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesMercredi2" />
+
+    <TextView
+        android:id="@+id/textViewVendredi"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="V"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewJeudi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxVendredi"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesVendredi1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxJeudi" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesVendredi1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesVendredi2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesJeudi1" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesVendredi2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesJeudi2" />
+
+    <TextView
+        android:id="@+id/textViewSamedi"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="S"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVendredi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSamedi"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesSamedi1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxVendredi"
+        tools:layout_editor_absoluteX="105dp" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesSamedi1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesSamedi2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesVendredi1" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesSamedi2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesVendredi2" />
+
+    <TextView
+        android:id="@+id/textViewDimanche"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:text="D"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSamedi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxDimanche"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:text="Travaillé?"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesDimanche1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxSamedi" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesDimanche1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesDimanche2"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesSamedi1" />
+
+    <Spinner
+        android:id="@+id/spinnerHorairesDimanche2"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:entries="@array/listeHoraires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerHorairesSamedi2" />
+
+    <Button
+        android:id="@+id/boutonSuivantE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:text="Suivant"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxDimanche" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">appliMedecin</string>
+    <string name="bienvenue_sur_l_application">Bienvenue sur l\'application!</string>
+    <string name="logo">logo</string>
+    <string name="connexion">Connexion</string>
+    <string name="cr_ez_en_un">Créez en un !</string>
+    <string name="pas_de_compte">Pas de compte ?</string>
+    <string name="Doc2Doc">Doc2Doc</string>
+</resources>
