@@ -26,15 +26,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="Créez votre annonce :"
+        android:text="Description"
         android:textColor="#363333"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSujet" />
+        app:layout_constraintTop_toBottomOf="@+id/sujetView" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/descriptionView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -43,7 +43,6 @@
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:gravity="start"
-        android:inputType="textPersonName"
         android:text="Saisissez les termes de votre annonce"
         android:textAlignment="viewStart"
         android:textColor="#5C5757"
@@ -56,7 +55,7 @@
         android:id="@+id/validerAnnonceBouton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Valider l'annonce"
+        android:text="Postuler"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -67,22 +66,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
-        android:text="Sujet de l'annonce :"
+        android:text="Sujet"
         android:textColor="#363333"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-    <EditText
-        android:id="@+id/editSujet"
+    <TextView
+        android:id="@+id/sujetView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="Sujet de l'annonce"
         android:textColor="#5C5757"
         app:layout_constraintEnd_toEndOf="parent"

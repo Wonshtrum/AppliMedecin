@@ -3,16 +3,15 @@ package com.example.applimedecin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.test.*
+import kotlinx.android.synthetic.main.activity_profil.*
 
-class MainTest : AppCompatActivity() {
+class Profil : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.test)
+        setContentView(R.layout.activity_profil)
         imageButton2.setOnClickListener {
-            startActivity(Intent(this@MainTest,AnnoncesActivity::class.java))
+            startActivity(Intent(this@Profil,AnnoncesActivity::class.java))
         }
     }
 }
