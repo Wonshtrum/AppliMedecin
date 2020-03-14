@@ -38,7 +38,8 @@ class AnnoncesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
         DoAsync {
-            val res = URL("http://62.210.83.83:5000/test2").readText()
+            val req = SimpleRequest(SimpleRequestType.ANNONCES)
+            val res = req.send("/test2")
             bdd.addAll(res.split(","))
         }.execute()
 
@@ -62,21 +63,12 @@ class AnnoncesActivity : AppCompatActivity() {
         }
         buttonCreate.setOnClickListener {
             DoAsync {
-                val data = SimpleRequest(SimpleRequest.)
-                data.put("numTel", "06 06 06 06 06")
-
-                println(data);
-                val response: Response = httpGet {
-                    host = "62.210.83.83"
-                    path = "/test3"
-                    port = 5000
-                    param {
-                        "json" to data
-                    }
-                }
-                println(response.message())
+                val req = SimpleRequest(SimpleRequestType.CLIENT)
+                req.put("numTel", "06 06 06 06 06")
+                val response = req.send("/test3")
+                println(response)
             }.execute()
-            //startActivity(Intent(this@AnnoncesActivity,AnnonceActivity::class.java))
+            startActivity(Intent(this@AnnoncesActivity,AnnonceActivity::class.java))
         }
     }
 }

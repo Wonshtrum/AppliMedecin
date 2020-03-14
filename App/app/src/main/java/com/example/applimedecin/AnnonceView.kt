@@ -17,7 +17,7 @@ class AnnonceView : AppCompatActivity(){
             sujetView.text = extras.getString("sujet")
             descriptionView.text = extras.getString("description")
         }
-        imageButton.setOnClickListener {
+        imageButton3.setOnClickListener {
             startActivity(Intent(this@AnnonceView,AnnoncesActivity::class.java))
         }
     }

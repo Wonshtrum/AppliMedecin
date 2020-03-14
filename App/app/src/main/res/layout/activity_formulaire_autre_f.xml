@@ -8,12 +8,14 @@
     tools:context=".FormulaireAutreFActivity">
 
     <TextView
-        android:id="@+id/textEtapeF"
+        android:id="@+id/textViewEtapeF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Etape 6 sur 8"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,132 +25,156 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:layout_marginTop="20dp"
-        android:progress="72"
+        android:progress="75"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEtapeF" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEtapeF" />
 
-    <TextView
-        android:id="@+id/textTitreEtapeF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Informations Complémentaires"
-        android:textColor="#000000"
-        android:textSize="20sp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeF" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeF"
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/textOffreEtapeF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Type patientèle:"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeF" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Spinner
-        android:id="@+id/spinnerPatientèle"
-        android:layout_width="194dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="30dp"
-        android:entries="@array/listePatientèle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeF" />
+            <TextView
+                android:id="@+id/textTitreEtapeF"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:text="Informations Complémentaires"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/textOffreEtapeF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Type patientèle:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/spinnerPatientèle"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewDomaine"
-        android:layout_width="109dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="45dp"
-        android:text="Type d'activité:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textOffreEtapeF" />
-
-    <EditText
-        android:id="@+id/editTextDomaine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerPatientèle" />
-
-    <TextView
-        android:id="@+id/textRémunération"
-        android:layout_width="109dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="44dp"
-        android:text="Rémunération:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDomaine" />
-
-    <EditText
-        android:id="@+id/editTextRémunération"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDomaine" />
+            <Spinner
+                android:id="@+id/spinnerPatientèle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:entries="@array/listePatientèle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textOffreEtapeF"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeF" />
 
 
-    <Button
-        android:id="@+id/boutonSuivantF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
+            <TextView
+                android:id="@+id/textViewDomaine"
+                android:layout_width="109dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Type d'activité:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextDomaine"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        android:text="Suivant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerSecrétariat" />
+            <EditText
+                android:id="@+id/editTextDomaine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/spinnerPatientèle"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerPatientèle" />
 
-    <Switch
-        android:id="@+id/switchSecrétariat"
-        android:layout_width="247dp"
-        android:layout_height="6dp"
-        android:layout_marginTop="20dp"
-        android:text="Secrétariat?"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRémunération" />
+            <TextView
+                android:id="@+id/textRémunération"
+                android:layout_width="109dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Rémunération:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextRémunération"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textSecrétariat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="81dp"
-        android:enabled="false"
-        android:text="Précision:"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textRémunération" />
+            <EditText
+                android:id="@+id/editTextRémunération"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/editTextDomaine"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDomaine" />
 
-    <Spinner
-        android:id="@+id/spinnerSecrétariat"
-        android:layout_width="230dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="70dp"
-        android:enabled="false"
-        android:entries="@array/listeSecrétariat"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRémunération" />
 
+            <Button
+                android:id="@+id/boutonSuivantF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:enabled="false"
+
+                android:text="Suivant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerSecrétariat" />
+
+            <Switch
+                android:id="@+id/switchSecrétariat"
+                android:layout_width="247dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="20dp"
+                android:text="Secrétariat?"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextRémunération" />
+
+            <TextView
+                android:id="@+id/textSecrétariat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:enabled="false"
+                android:text="Précision:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/spinnerSecrétariat"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinnerSecrétariat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:enabled="false"
+                android:entries="@array/listeSecrétariat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/editTextRémunération"
+                app:layout_constraintTop_toBottomOf="@+id/switchSecrétariat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

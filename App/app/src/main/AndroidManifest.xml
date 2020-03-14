@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.applimedecin">
 
     <application
@@ -10,27 +11,31 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Profil"></activity>
-        <activity android:name=".AnnoncesActivity"></activity>
-        <activity android:name=".FormulaireRemplacantActivityA"></activity>
-        <activity android:name=".FormulaireRemplacantActivityB"></activity>
-        <activity android:name=".FormulaireRemplacantActivityC"></activity>
-        <activity android:name=".FormulaireRemplacantActivityD"></activity>
-        <activity android:name=".FormulaireRemplacantActivityE"></activity>
-        <activity android:name=".FormulaireAutreAActivity"></activity>
-        <activity android:name=".FormulaireAutreBActivity"></activity>
-        <activity android:name=".FormulaireAutreCActivity"></activity>
-        <activity android:name=".FormulaireAutreDActivity"></activity>
-        <activity android:name=".FormulaireAutreEActivity"></activity>
-        <activity android:name=".FormulaireAutreFActivity"></activity>
-        <activity android:name=".FormulaireAutreGActivity"></activity>
-        <activity android:name=".FormulaireAutreHActivity"></activity>
-        <activity android:name=".FormulaireActivity"></activity>
-        <activity android:name=".AnnonceActivity"></activity>
-        <activity android:name=".FormulaireAdminActivity"></activity>
-        <activity android:name=".ConnexionActivity"></activity>
-        <activity android:name=".AnnonceView"></activity>
+        android:theme="@style/AppTheme"
+        tools:ignore="ExtraText,GoogleAppIndexingWarning"
+        tools:targetApi="n"
+        android:fullBackupContent="true"
+        android:name="androidx.multidex.MultiDexApplication">
+        <activity android:name=".Profil" />
+        <activity android:name=".AnnoncesActivity" />
+        <activity android:name=".FormulaireRemplacantActivityA" />
+        <activity android:name=".FormulaireRemplacantActivityB" />
+        <activity android:name=".FormulaireRemplacantActivityC" />
+        <activity android:name=".FormulaireRemplacantActivityD" />
+        <activity android:name=".FormulaireRemplacantActivityE" />
+        <activity android:name=".FormulaireAutreAActivity" />
+        <activity android:name=".FormulaireAutreBActivity" />
+        <activity android:name=".FormulaireAutreCActivity" />
+        <activity android:name=".FormulaireAutreDActivity" />
+        <activity android:name=".FormulaireAutreEActivity" />
+        <activity android:name=".FormulaireAutreFActivity" />
+        <activity android:name=".FormulaireAutreGActivity" />
+        <activity android:name=".FormulaireAutreHActivity" />
+        <activity android:name=".FormulaireActivity" />
+        <activity android:name=".AnnonceActivity" />
+        <activity android:name=".FormulaireAdminActivity" />
+        <activity android:name=".ConnexionActivity" />
+        <activity android:name=".AnnonceView" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
