@@ -71,6 +71,26 @@ public class BddService {
         }
     }
 
+    boolean deleteByIdOffre(int id){
+        myOffre.deleteByIdOffre(id);
+        return myOffre.existsByIdOffre(id);
+    }
+
+    boolean deleteByIdRemplacant(int id){
+        myRemplacant.deleteByIdRemplacant(id);
+        return myRemplacant.existsByIdRemplacant(id);
+    }
+
+    boolean deleteByIdClient(int id){
+        myClient.deleteByIdClient(id);
+        return myClient.existsByIdClient(id);
+    }
+
+    boolean deleteByIdPostulat(int id){
+        myPostulat.deleteByIdPostulat(id);
+        return myPostulat.existsByIdPostulat(id);
+    }
+
     Pair<Integer,String> lireData(JSONObject obj){
         Integer id = Integer.parseInt((String) obj.get("id"));
         String type = (String) obj.get("type");
@@ -100,6 +120,7 @@ public class BddService {
                 if (myOffre.existsByIdOffre(Integer.parseInt((String)obj.get("idOffre")))){
                     o = myOffre.findByIdOffre(Integer.parseInt((String)obj.get("idOffre")));
                 }
+                o.setIdClient((Integer.parseInt((String) obj.get("idClient"))));
                 o.setActivite(Byte.parseByte((String) obj.get("activite")));
                 o.setCarteProFilename((String) obj.get("carteProFilename"));
                 o.setDescription((String) obj.get("description"));
@@ -119,6 +140,9 @@ public class BddService {
                 if (myPostulat.existsByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")))){
                     p = myPostulat.findByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")));
                 }
+                p.setIdOffre(Integer.parseInt((String) obj.get("idOffre")));
+                p.setIdRemplacant(Integer.parseInt((String) obj.get("idRemplacant")));
+                myPostulat.save(p);
                 break;
             case "remplacant":
                 Remplacant r = new Remplacant();

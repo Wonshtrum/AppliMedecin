@@ -9,4 +9,5 @@ public interface RemplacantRepository extends Repository<Remplacant,Integer> {
     Remplacant findByIdRemplacant(int id);
     Remplacant findByMdpAndMail(String mdp, String mail);
     boolean existsByMdpAndMail(String mdp, String mail);
+    void deleteByIdRemplacant(int id);
 }

@@ -140,4 +140,36 @@ public class Controllers {
         newObj.put("offres", jsOffres);
         return newObj.toJSONString();
     }
+
+    @GetMapping("/supprimerChose")
+    public String SupprimerChose(@RequestParam(name="info" ,required=true) String json)throws ParseException{
+        JSONObject obj = lireJson(json);
+        Pair<Integer,String>paire = myBddService.lireData(obj);
+        switch (paire.getSecond()){
+            case "offre":
+                if (myBddService.deleteByIdOffre(paire.getFirst())){
+                    return "true";
+                }
+                return "false";
+            case "remplacant":
+                if (myBddService.deleteByIdRemplacant(paire.getFirst())){
+                    return "true";
+                }
+                return "false";
+            case "client":
+                if (myBddService.deleteByIdClient(paire.getFirst())){
+                    return "true";
+                }
+                return "false";
+            case "postulat":
+                if (myBddService.deleteByIdPostulat(paire.getFirst())){
+                    return "true";
+                }
+                return "false";
+            default :
+                return "mauvaise structure de données";
+        }
+
+    }
+
 }
