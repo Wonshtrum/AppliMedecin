@@ -17,6 +17,7 @@ public class Remplacant {
     private String description;
     private String cvFilename;
     private String carteProFilename;
+    private String mdp;
 
     @Id
     @Column(name = "id_remplacant", nullable = false)
@@ -36,6 +37,16 @@ public class Remplacant {
 
     public void setMail(String mail) {
         this.mail = mail;
+    }
+
+    @Basic
+    @Column(name = "mdp", nullable = true, length = 255)
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     @Basic
@@ -136,6 +147,7 @@ public class Remplacant {
         if (cvFilename != null ? !cvFilename.equals(that.cvFilename) : that.cvFilename != null) return false;
         if (carteProFilename != null ? !carteProFilename.equals(that.carteProFilename) : that.carteProFilename != null)
             return false;
+        if (mdp != null ? !mdp.equals(that.mdp) : that.mdp != null) return false;
 
         return true;
     }

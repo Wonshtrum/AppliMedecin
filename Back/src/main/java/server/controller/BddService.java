@@ -3,6 +3,7 @@ package server.controller;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.springframework.data.util.Pair;
 import server.bdd.model.Client;
 import server.bdd.model.Offre;
 import server.bdd.model.Postulat;
@@ -25,7 +26,36 @@ public class BddService {
         this.myRemplacant= myRemplacant;
     }
 
-    void saveData(JSONArray data){
+
+    Remplacant getRemplacantByid(int id) {
+        return myRemplacant.findByIdRemplacant(id);
+    }
+
+    Client getClientById(int id){
+        return  myClient.findByIdClient(id);
+    }
+
+    Pair<Integer,String> verifConnexion(String mdp, String mail){
+        if (myRemplacant.existsByMdpAndMail(mdp, mail)){
+            Remplacant r = myRemplacant.findByMdpAndMail(mdp,mail);
+            return Pair.of(r.getIdRemplacant(),"remplacant");
+        }
+        else if (myClient.existsByMdpAndMail(mdp,mail)){
+            Client c = myClient.findByMdpAndMail(mdp, mail);
+            return Pair.of(c.getIdClient(),"client");
+        }
+        else{
+            return Pair.of(-1,"none");
+        }
+    }
+
+    Pair<Integer,String> lireData(JSONObject obj){
+        Integer id = Integer.parseInt((String) obj.get("id"));
+        String type = (String) obj.get("type");
+        return Pair.of(id,type);
+    }
+
+    void saveData(JSONObject data){
         String categorie = (String) data.get(0);
         JSONObject obj = (JSONObject) data.get(1);
         System.out.println(categorie);

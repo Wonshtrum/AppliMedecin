@@ -3,11 +3,13 @@ package server.controller;
 
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import server.bdd.model.Client;
+import server.bdd.model.Remplacant;
 import server.bdd.repository.ClientRepository;
 import server.bdd.repository.OffreRepository;
 import server.bdd.repository.PostulatRepository;
@@ -33,9 +35,9 @@ public class Controllers {
         return res;
     }
 
-    public JSONArray lireJson(String obj) throws ParseException {
+    public JSONObject lireJson(String obj) throws ParseException {
        Object obj2 =parser.parse(obj);
-        return (JSONArray) obj2;
+        return (JSONObject) obj2;
     }
 
     @GetMapping("/test2")
@@ -46,8 +48,59 @@ public class Controllers {
 
     @GetMapping("/test3")
     public String testJSon(@RequestParam(name="json", required=true) String json) throws ParseException {
-        JSONArray jj = lireJson(json);
+        JSONObject jj = lireJson(json);
         myBddService.saveData(jj);
         return "bonjour";
+    }
+
+    @GetMapping("/connexion")
+    public String connexion(@RequestParam(name="infoConnexion",required = true) String json) throws ParseException{
+        JSONObject ja = lireJson(json);
+        String mail = (String) ja.get("mail");
+        String mdp = (String) ja.get("mdp");
+        Pair<Integer,String> infos = myBddService.verifConnexion(mdp,mail);
+        JSONObject jay = new JSONObject();
+        jay.put("id",infos.getFirst());
+        jay.put("type",infos.getSecond());
+        return jay.toJSONString();
+    }
+
+    @GetMapping("/requeteDonnées")
+    public String requete(@RequestParam(name="infoCompte",required = true) String json) throws ParseException{
+        JSONObject obj= lireJson(json);
+        Pair<Integer,String> paire= myBddService.lireData(obj);
+        if (paire.getSecond().equals("remplacant")){
+            Remplacant r = myBddService.getRemplacantByid(paire.getFirst());
+            JSONObject newData = new JSONObject();
+            newData.put("idRemplacant",r.getIdRemplacant());
+            newData.put("mail",r.getMail());
+            newData.put("kmMax",r.getKmMax());
+            newData.put("numTel",r.getNumTel());
+            newData.put("dispo",r.getDispo());
+            newData.put("zoneGeo",r.getZoneGeo());
+            newData.put("spec",r.getSpec());
+            newData.put("cvFilename",r.getCvFilename());
+            newData.put("description",r.getDescription());
+            newData.put("carteProFilename",r.getCarteProFilename());
+            newData.put("mdp",r.getMdp());
+            return newData.toJSONString();
+        }
+        else if(paire.getSecond().equals("client")){
+            Client c = myBddService.getClientById(paire.getFirst());
+            JSONObject newData = new JSONObject();
+            newData.put("idClient",c.getIdClient());
+            newData.put("typeOffre",c.getTypeOffre());
+            newData.put("mail",c.getMail());
+            newData.put("mdp",c.getMdp());
+            newData.put("kmMax",c.getKmMax());
+            newData.put("numTel",c.getNumTel());
+            newData.put("zoneGeo",c.getZoneGeo());
+            newData.put("adresse",c.getAdresse());
+            newData.put("periode",c.getPeriode());
+            return newData.toJSONString();
+        }
+        else {
+            return "erreur";
+        }
     }
 }
