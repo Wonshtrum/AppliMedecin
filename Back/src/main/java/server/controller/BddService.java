@@ -4,6 +4,9 @@ package server.controller;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import server.bdd.model.Client;
+import server.bdd.model.Offre;
+import server.bdd.model.Postulat;
+import server.bdd.model.Remplacant;
 import server.bdd.repository.ClientRepository;
 import server.bdd.repository.OffreRepository;
 import server.bdd.repository.PostulatRepository;
@@ -24,25 +27,63 @@ public class BddService {
 
     void saveData(JSONArray data){
         String categorie = (String) data.get(0);
-        JSONObject obj = (JSONObject) data.get(0);
+        JSONObject obj = (JSONObject) data.get(1);
         System.out.println(categorie);
         switch (categorie){
             case "Client":
                 Client c = new Client();
-                if (!myClient.existsByNumTel((String) obj.get("numTel"))){
-                    c.setNumTel((String) obj.get("numTel"));
-                    System.out.println(c.getNumTel());
-            }
-                System.out.println("client");
+                if (myClient.existsByIdClient(Integer.parseInt((String)obj.get("idClient")))) {
+                    c = myClient.findByIdClient(Integer.parseInt((String)obj.get("idClient")));
+                }
+                c.setNumTel((String) obj.get("numTel"));
+                c.setAdresse((String) obj.get("adresse"));
+                c.setKmMax( Integer.parseInt((String)obj.get("kmMax")));
+                c.setMail((String) obj.get("mail"));
+                c.setPeriode((String) obj.get("periode"));
+                c.setTypeOffre(Short.parseShort((String) obj.get("typeOffre")));
+                c.setZoneGeo((String) obj.get("zoneGeo"));
+                myClient.save(c);
                 break;
             case "Offre":
-                System.out.println("offre");
+                Offre o = new Offre();
+                if (myOffre.existsByIdOffre(Integer.parseInt((String)obj.get("idOffre")))){
+                    o = myOffre.findByIdOffre(Integer.parseInt((String)obj.get("idOffre")));
+                }
+                o.setActivite(Byte.parseByte((String) obj.get("activite")));
+                o.setCarteProFilename((String) obj.get("carteProFilename"));
+                o.setDescription((String) obj.get("description"));
+                o.setDispoSec((String) obj.get("dispoSec"));
+                o.setHoraire((String) obj.get("horaire"));
+                o.setLogicielUtilise((String) obj.get("logicielUtilise"));
+                o.setRetrocession((String) obj.get("retrocession"));
+                o.setSecretariat(Byte.parseByte((String) obj.get("secretariat")));
+                o.setSpec((String) obj.get("spec"));
+                o.setTypeOffre(Short.parseShort((String) obj.get("typeOffre")));
+                o.setTypePatient((String) obj.get("typePatient"));
+                o.setVisiteDomicile(Integer.parseInt((String) obj.get("visiteDomicile")));
+                myOffre.save(o);
                 break;
             case "Postulat":
-                System.out.println("postulat");
+                Postulat p = new Postulat();
+                if (myPostulat.existsByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")))){
+                    p = myPostulat.findByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")));
+                }
                 break;
             case "Remplacant":
-                System.out.println("remplacant");
+                Remplacant r = new Remplacant();
+                if (myRemplacant.existsByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")))){
+                    myRemplacant.findByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")));
+                }
+                r.setCarteProFilename((String) obj.get("carteProFilename"));
+                r.setCvFilename((String) obj.get("cvFilename"));
+                r.setDescription((String) obj.get("description"));
+                r.setDispo((String) obj.get("dispo"));
+                r.setKmMax(Integer.parseInt((String) obj.get("kmMax")));
+                r.setMail((String) obj.get("mail"));
+                r.setNumTel((String) obj.get("numTel"));
+                r.setSpec((String) obj.get("spec"));
+                r.setZoneGeo((String) obj.get("zoneGeo"));
+                myRemplacant.save(r);
                 break;
             default :
                 System.out.println("defaut");

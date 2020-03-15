@@ -5,4 +5,6 @@ import server.bdd.model.Remplacant;
 
 public interface RemplacantRepository extends Repository<Remplacant,Integer> {
     void save(Remplacant r);
+    boolean existsByIdRemplacant(int id);
+    Remplacant findByIdRemplacant(int id);
 }

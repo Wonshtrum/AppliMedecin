@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface PostulatRepository extends Repository<Postulat,Integer> {
     void save(Postulat p);
+    boolean existsByIdPostulat(int id);
+    Postulat findByIdPostulat(int id);
 
 }
