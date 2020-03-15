@@ -10,9 +10,11 @@
         android:id="@+id/textViewARemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Etape 1 sur 5"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,102 +24,123 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:layout_marginTop="20dp"
         android:progress="20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewARemp" />
 
-    <TextView
-        android:id="@+id/textTitreARemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Quelles sont vos coordonnées?"
-        android:textColor="#000000"
-        android:textSize="20sp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarARemp" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBarARemp">
 
-    <TextView
-        android:id="@+id/textViewMailRemp"
-        android:layout_width="109dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="45dp"
-        android:text="Adresse-mail:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitreARemp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editTextMailRemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="exemple@mail.com"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitreARemp" />
+            <TextView
+                android:id="@+id/textTitreARemp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAlignment="center"
+                android:text="Quelles sont vos coordonnées?"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textNumTelRemp"
-        android:layout_width="109dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="44dp"
-        android:text="N° téléphone:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMailRemp" />
+            <TextView
+                android:id="@+id/textViewMailRemp"
+                android:layout_width="109dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Adresse-mail:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextMailRemp"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextNumTelRemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="0606060606"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMailRemp" />
+            <EditText
+                android:id="@+id/editTextMailRemp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="exemple@mail.com"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewMailRemp"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreARemp" />
 
-    <TextView
-        android:id="@+id/textAdresseRemp"
-        android:layout_width="109dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="43dp"
-        android:text="Adresse:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNumTelRemp" />
+            <TextView
+                android:id="@+id/textNumTelRemp"
+                android:layout_width="109dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="N° téléphone:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextNumTelRemp"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/editText2Remp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="10, Rue des Docteurs"
-        android:inputType="textPostalAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumTelRemp" />
+            <EditText
+                android:id="@+id/editTextNumTelRemp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="0606060606"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/editTextMailRemp"
+                app:layout_constraintTop_toBottomOf="@+id/editTextMailRemp" />
 
-    <Button
-        android:id="@+id/boutonSuivantARemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:enabled="false"
-        android:text="Suivant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2Remp" />
+            <TextView
+                android:id="@+id/textAdresseRemp"
+                android:layout_width="109dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Adresse:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editText2Remp"
+                app:layout_constraintStart_toStartOf="parent" />
 
+            <EditText
+                android:id="@+id/editText2Remp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:hint="10, Rue des Docteurs"
+                android:inputType="textPostalAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/editTextNumTelRemp"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNumTelRemp" />
+
+            <Button
+                android:id="@+id/boutonSuivantARemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:enabled="false"
+                android:text="Suivant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText2Remp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,12 +8,14 @@
     tools:context=".FormulaireAutreCActivity">
 
     <TextView
-        android:id="@+id/textEtapeC"
+        android:id="@+id/textViewEtapeC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Etape 3 sur 8"
-        android:textColor="#000000"
-        android:textSize="20sp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,43 +25,59 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:layout_marginTop="20dp"
-        android:progress="36"
+        android:progress="37"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEtapeC" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEtapeC" />
 
-
-    <TextView
-        android:id="@+id/textTitreEtapeC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Séléctionner une date de fin de période"
-        android:textColor="#000000"
-        android:textSize="20sp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeC" />
+        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeC">
 
-    <CalendarView
-        android:id="@+id/calendarViewFIn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minDate="01/12/2019"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeC" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/boutonSuivantC"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
+            <TextView
+                android:id="@+id/textTitreEtapeC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:text="Séléctionner une date de fin de période"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        android:text="Suivant"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/calendarViewFIn" />
+            <CalendarView
+                android:id="@+id/calendarViewFIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:minDate="01/12/2019"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeC" />
 
+            <Button
+                android:id="@+id/boutonSuivantC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Suivant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calendarViewFIn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

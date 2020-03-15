@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_formulaire_autre_f.*
 
@@ -15,12 +16,13 @@ class FormulaireAutreFActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulaire_autre_f)
+        val editSwitch = findViewById<Switch>(R.id.switchSecrétariat);
         val editChamps1 = findViewById<View>(R.id.spinnerSecrétariat);
         val editChamps2 = findViewById<EditText>(R.id.editTextRémunération);
         val editChamps3 = findViewById<EditText>(R.id.editTextDomaine);
+        val editChamps4 = findViewById<TextView>(R.id.textSecrétariat);
         val boutonValider=findViewById<Button>(R.id.boutonSuivantF)
         editChamps1.setEnabled(false)
-        val editSwitch = findViewById<Switch>(R.id.switchSecrétariat);
 
         boutonSuivantF.setOnClickListener {
 
@@ -65,8 +67,10 @@ class FormulaireAutreFActivity: AppCompatActivity() {
             println(isChecked)
             if (isChecked) {
                 editChamps1.setEnabled(true)
+                editChamps4.setEnabled(true)
             }else{
                 editChamps1.setEnabled(false)
+                editChamps4.setEnabled(false)
             }
         }
     }
