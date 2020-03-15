@@ -13,6 +13,9 @@ import server.bdd.repository.OffreRepository;
 import server.bdd.repository.PostulatRepository;
 import server.bdd.repository.RemplacantRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BddService {
     private final ClientRepository myClient;
     private final OffreRepository myOffre;
@@ -35,6 +38,25 @@ public class BddService {
         return  myClient.findByIdClient(id);
     }
 
+    List<Offre> getOffreByIdClient(int id){
+        return myOffre.getAllByIdClient(id);
+    }
+
+    List<Postulat> getPostulatByIdRemplacant(int id){
+        return myPostulat.getAllByIdRemplacant(id);
+    }
+
+    List<Offre> getAllOffres(){
+        return myOffre.getAllByIdOffreIsNotNull();
+    }
+
+    List<Offre> getByAllPostulat(List<Postulat> pos){
+        ArrayList<Offre> liste= new ArrayList<>();
+        for (Postulat p : pos){
+            liste.add(myOffre.findByIdOffre(p.getIdOffre()));
+        }
+        return liste;
+    }
     Pair<Integer,String> verifConnexion(String mdp, String mail){
         if (myRemplacant.existsByMdpAndMail(mdp, mail)){
             Remplacant r = myRemplacant.findByMdpAndMail(mdp,mail);
@@ -56,11 +78,10 @@ public class BddService {
     }
 
     void saveData(JSONObject data){
-        String categorie = (String) data.get(0);
+        String type = (String) data.get(0);
         JSONObject obj = (JSONObject) data.get(1);
-        System.out.println(categorie);
-        switch (categorie){
-            case "Client":
+        switch (type){
+            case "client":
                 Client c = new Client();
                 if (myClient.existsByIdClient(Integer.parseInt((String)obj.get("idClient")))) {
                     c = myClient.findByIdClient(Integer.parseInt((String)obj.get("idClient")));
@@ -74,7 +95,7 @@ public class BddService {
                 c.setZoneGeo((String) obj.get("zoneGeo"));
                 myClient.save(c);
                 break;
-            case "Offre":
+            case "offre":
                 Offre o = new Offre();
                 if (myOffre.existsByIdOffre(Integer.parseInt((String)obj.get("idOffre")))){
                     o = myOffre.findByIdOffre(Integer.parseInt((String)obj.get("idOffre")));
@@ -93,13 +114,13 @@ public class BddService {
                 o.setVisiteDomicile(Integer.parseInt((String) obj.get("visiteDomicile")));
                 myOffre.save(o);
                 break;
-            case "Postulat":
+            case "postulat":
                 Postulat p = new Postulat();
                 if (myPostulat.existsByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")))){
                     p = myPostulat.findByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")));
                 }
                 break;
-            case "Remplacant":
+            case "remplacant":
                 Remplacant r = new Remplacant();
                 if (myRemplacant.existsByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")))){
                     myRemplacant.findByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")));

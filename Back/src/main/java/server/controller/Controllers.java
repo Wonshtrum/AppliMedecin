@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import server.bdd.model.Client;
+import server.bdd.model.Offre;
 import server.bdd.model.Remplacant;
 import server.bdd.repository.ClientRepository;
 import server.bdd.repository.OffreRepository;
@@ -17,6 +18,8 @@ import server.bdd.repository.RemplacantRepository;
 import server.json.SimpleResponse;
 import server.json.TestJson;
 import org.json.simple.*;
+
+import java.util.List;
 
 @Controller
 @ResponseBody
@@ -65,8 +68,8 @@ public class Controllers {
         return jay.toJSONString();
     }
 
-    @GetMapping("/requeteDonnées")
-    public String requete(@RequestParam(name="infoCompte",required = true) String json) throws ParseException{
+    @GetMapping("/requeteInfoCompte")
+    public String requeteInfoCompte(@RequestParam(name="infoCompte",required = true) String json) throws ParseException{
         JSONObject obj= lireJson(json);
         Pair<Integer,String> paire= myBddService.lireData(obj);
         if (paire.getSecond().equals("remplacant")){
@@ -102,5 +105,39 @@ public class Controllers {
         else {
             return "erreur";
         }
+    }
+
+    @GetMapping("/requeteOffreLiee")
+    public String requeteOffreLiee(@RequestParam(name="infoCompte",required = true) String json) throws ParseException {
+        JSONObject obj = lireJson(json);
+        Pair<Integer, String> paire = myBddService.lireData(obj);
+        if (paire.getSecond().equals("client")) {
+            List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
+            JSONObject newObj = new JSONObject();
+            JSONArray jsOffres = new JSONArray();
+            jsOffres.addAll(offres);
+            newObj.put("offres", jsOffres);
+            return newObj.toJSONString();
+        } else if (paire.getSecond().equals("remplacant")) {
+            List<Offre> offres = myBddService.getByAllPostulat(myBddService.getPostulatByIdRemplacant(paire.getFirst()));
+            JSONObject newObj = new JSONObject();
+            JSONArray jsOffres = new JSONArray();
+            jsOffres.addAll(offres);
+            newObj.put("offres", jsOffres);
+            return newObj.toJSONString();
+        }
+        else {
+            return "erreur";
+        }
+    }
+
+    @GetMapping("/requeteOffres")
+    public String requeteOffres() {
+        List<Offre> offres = myBddService.getAllOffres();
+        JSONObject newObj = new JSONObject();
+        JSONArray jsOffres = new JSONArray();
+        jsOffres.addAll(offres);
+        newObj.put("offres", jsOffres);
+        return newObj.toJSONString();
     }
 }

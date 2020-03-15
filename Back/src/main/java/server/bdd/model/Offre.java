@@ -8,6 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Offre {
     private int idOffre;
+    private int idClient;
     private Short typeOffre;
     private Integer visiteDomicile;
     private Byte activite;
@@ -29,6 +30,16 @@ public class Offre {
 
     public void setIdOffre(int idOffre) {
         this.idOffre = idOffre;
+    }
+
+    @Basic
+    @Column(name = "id_client", nullable = false)
+    public int getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
 
     @Basic
