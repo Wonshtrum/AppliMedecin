@@ -101,9 +101,8 @@ public class BddService {
         return myOffre.findByIdOffre(id);
     }
 
-    void saveData(JSONObject data){
-        String type = (String) data.get(0);
-        JSONObject obj = (JSONObject) data.get(1);
+    void saveData(JSONObject obj){
+        String type = (String) obj.get("type");
         switch (type){
             case "client":
                 Client c = new Client();
