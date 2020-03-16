@@ -15,6 +15,7 @@ public class Client {
     private String periode;
     private String zoneGeo;
     private Integer kmMax;
+    private String mdp;
 
     @Id
     @Column(name = "id_client", nullable = false)
@@ -34,6 +35,16 @@ public class Client {
 
     public void setTypeOffre(Short typeOffre) {
         this.typeOffre = typeOffre;
+    }
+
+    @Basic
+    @Column(name = "mdp", nullable = true, length = 255)
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 
     @Basic
@@ -111,6 +122,7 @@ public class Client {
         if (periode != null ? !periode.equals(client.periode) : client.periode != null) return false;
         if (zoneGeo != null ? !zoneGeo.equals(client.zoneGeo) : client.zoneGeo != null) return false;
         if (kmMax != null ? !kmMax.equals(client.kmMax) : client.kmMax != null) return false;
+        if (mdp != null ? !mdp.equals(client.mdp) : client.mdp != null) return false;
 
         return true;
     }
