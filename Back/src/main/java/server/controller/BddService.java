@@ -29,6 +29,9 @@ public class BddService {
         this.myRemplacant= myRemplacant;
     }
 
+    List<Postulat> getPostulatByIdOffre(int id){
+        return myPostulat.getAllByIdOffre(id);
+    }
 
     Remplacant getRemplacantByid(int id) {
         return myRemplacant.findByIdRemplacant(id);
@@ -101,7 +104,13 @@ public class BddService {
         return myOffre.findByIdOffre(id);
     }
 
-    void saveData(JSONObject obj){
+    List<Object> getComptesAValider(){
+        List<Object> obj = new ArrayList<>(myClient.getDistinctByMdpIsNull());
+        obj.addAll(myRemplacant.getDistinctByMdpIsNull());
+        return obj;
+    }
+
+    void saveData(JSONObject obj) {
         String type = (String) obj.get("type");
         switch (type){
             case "client":
@@ -167,6 +176,6 @@ public class BddService {
                 System.out.println("defaut");
                 break;
         }
-        }
     }
+}
 
