@@ -208,7 +208,7 @@ public class Controllers {
     }
 
     @GetMapping("/annoncesArchivees")
-    public String getAnnoncesArchivees(@RequestParam(name="info" ,required=true) String json)throws ParseException {
+    public String getAnnoncesArchivees(@RequestParam(name="data" ,required=true) String json)throws ParseException {
         JSONObject obj = lireJson(json);
         Pair<Integer,String>paire = myBddService.lireData(obj);
         JSONObject newObj = new JSONObject();
