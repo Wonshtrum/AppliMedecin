@@ -11,5 +11,8 @@ public interface ClientRepository extends Repository<Client,Integer> {
         Client findByNumTel(String numTel);
         boolean existsByIdClient(int id);
         Client findByIdClient(int id);
+        Client findByMdpAndMail(String mdp, String mail);
+        boolean existsByMdpAndMail(String mdp, String mail);
+        void deleteByIdClient(int id);
 
 }
