@@ -24,6 +24,7 @@ import org.json.simple.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @ResponseBody
@@ -212,7 +213,9 @@ public class Controllers {
         JSONObject obj = lireJson(json);
         Pair<Integer,String>paire = myBddService.lireData(obj);
         JSONObject newObj = new JSONObject();
-        newObj.put("archives",gson.toJson(myBddService.getOffreByIdClient(paire.getFirst())));
+        List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
+        offres = offres.stream().filter(offre -> offre.getArchivage()!=0).collect(Collectors.toList());
+        newObj.put("archivage",offres);
         return newObj.toJSONString();
     }
 
