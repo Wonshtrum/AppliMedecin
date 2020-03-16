@@ -1,6 +1,7 @@
 package server.controller;
 
 
+import com.google.gson.Gson;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.data.util.Pair;
@@ -24,6 +25,7 @@ import java.util.List;
 @Controller
 @ResponseBody
 public class Controllers {
+    Gson gson = new Gson();
     JSONParser parser = new JSONParser();
     private BddService myBddService;
 
@@ -68,61 +70,68 @@ public class Controllers {
         return jay.toJSONString();
     }
 
-    @GetMapping("/requeteInfoCompte")
-    public String requeteInfoCompte(@RequestParam(name="infoCompte",required = true) String json) throws ParseException{
+    @GetMapping("/requeteInfoLiee")
+    public String requeteInfoLiee(@RequestParam(name="infoLiee",required = true) String json) throws ParseException{
         JSONObject obj= lireJson(json);
         Pair<Integer,String> paire= myBddService.lireData(obj);
-        if (paire.getSecond().equals("remplacant")){
-            Remplacant r = myBddService.getRemplacantByid(paire.getFirst());
-            JSONObject newData = new JSONObject();
-            newData.put("idRemplacant",r.getIdRemplacant());
-            newData.put("mail",r.getMail());
-            newData.put("kmMax",r.getKmMax());
-            newData.put("numTel",r.getNumTel());
-            newData.put("dispo",r.getDispo());
-            newData.put("zoneGeo",r.getZoneGeo());
-            newData.put("spec",r.getSpec());
-            newData.put("cvFilename",r.getCvFilename());
-            newData.put("description",r.getDescription());
-            newData.put("carteProFilename",r.getCarteProFilename());
-            newData.put("mdp",r.getMdp());
-            return newData.toJSONString();
+        switch (paire.getSecond()) {
+            case "remplacant": {
+                Remplacant r = myBddService.getRemplacantByid(paire.getFirst());
+                JSONObject newData = new JSONObject();
+                newData.put("idRemplacant", r.getIdRemplacant());
+                newData.put("mail", r.getMail());
+                newData.put("kmMax", r.getKmMax());
+                newData.put("numTel", r.getNumTel());
+                newData.put("dispo", r.getDispo());
+                newData.put("zoneGeo", r.getZoneGeo());
+                newData.put("spec", r.getSpec());
+                newData.put("cvFilename", r.getCvFilename());
+                newData.put("description", r.getDescription());
+                newData.put("carteProFilename", r.getCarteProFilename());
+                newData.put("mdp", r.getMdp());
+                return newData.toJSONString();
+            }
+            case "client": {
+                Client c = myBddService.getClientById(paire.getFirst());
+                JSONObject newData = new JSONObject();
+                newData.put("idClient", c.getIdClient());
+                newData.put("typeOffre", c.getTypeOffre());
+                newData.put("mail", c.getMail());
+                newData.put("mdp", c.getMdp());
+                newData.put("kmMax", c.getKmMax());
+                newData.put("numTel", c.getNumTel());
+                newData.put("zoneGeo", c.getZoneGeo());
+                newData.put("adresse", c.getAdresse());
+                newData.put("periode", c.getPeriode());
+                return newData.toJSONString();
+            }
+            case "offre":
+                Offre o = myBddService.getOffreByIdOffre(paire.getFirst());
+                return gson.toJson(o);
         }
-        else if(paire.getSecond().equals("client")){
-            Client c = myBddService.getClientById(paire.getFirst());
-            JSONObject newData = new JSONObject();
-            newData.put("idClient",c.getIdClient());
-            newData.put("typeOffre",c.getTypeOffre());
-            newData.put("mail",c.getMail());
-            newData.put("mdp",c.getMdp());
-            newData.put("kmMax",c.getKmMax());
-            newData.put("numTel",c.getNumTel());
-            newData.put("zoneGeo",c.getZoneGeo());
-            newData.put("adresse",c.getAdresse());
-            newData.put("periode",c.getPeriode());
-            return newData.toJSONString();
-        }
-        else {
-            return "erreur";
-        }
+        return "erreur";
     }
 
     @GetMapping("/requeteOffreLiee")
-    public String requeteOffreLiee(@RequestParam(name="infoCompte",required = true) String json) throws ParseException {
+    public String requeteOffreLiee(@RequestParam(name="infoLiee",required = true) String json) throws ParseException {
         JSONObject obj = lireJson(json);
         Pair<Integer, String> paire = myBddService.lireData(obj);
         if (paire.getSecond().equals("client")) {
             List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
             JSONObject newObj = new JSONObject();
             JSONArray jsOffres = new JSONArray();
-            jsOffres.addAll(offres);
+            for (Offre o : offres){
+                jsOffres.add(gson.toJson(o));
+            }
             newObj.put("offres", jsOffres);
             return newObj.toJSONString();
         } else if (paire.getSecond().equals("remplacant")) {
             List<Offre> offres = myBddService.getByAllPostulat(myBddService.getPostulatByIdRemplacant(paire.getFirst()));
             JSONObject newObj = new JSONObject();
             JSONArray jsOffres = new JSONArray();
-            jsOffres.addAll(offres);
+            for (Offre o : offres){
+                jsOffres.add(gson.toJson(o));
+            }
             newObj.put("offres", jsOffres);
             return newObj.toJSONString();
         }
@@ -136,7 +145,9 @@ public class Controllers {
         List<Offre> offres = myBddService.getAllOffres();
         JSONObject newObj = new JSONObject();
         JSONArray jsOffres = new JSONArray();
-        jsOffres.addAll(offres);
+        for (Offre o : offres){
+            jsOffres.add(gson.toJson(o));
+        }
         newObj.put("offres", jsOffres);
         return newObj.toJSONString();
     }

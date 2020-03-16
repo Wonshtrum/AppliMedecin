@@ -97,6 +97,10 @@ public class BddService {
         return Pair.of(id,type);
     }
 
+    Offre getOffreByIdOffre(int id ){
+        return myOffre.findByIdOffre(id);
+    }
+
     void saveData(JSONObject data){
         String type = (String) data.get(0);
         JSONObject obj = (JSONObject) data.get(1);
