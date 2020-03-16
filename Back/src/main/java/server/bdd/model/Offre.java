@@ -11,6 +11,7 @@ public class Offre {
     private int idClient;
     private Short typeOffre;
     private Integer visiteDomicile;
+    private Integer archivage;
     private Byte activite;
     private String horaire;
     private String logicielUtilise;
@@ -40,6 +41,16 @@ public class Offre {
 
     public void setIdClient(int idClient) {
         this.idClient = idClient;
+    }
+
+    @Basic
+    @Column(name = "archivage", nullable = false)
+    public int getArchivage() {
+        return archivage;
+    }
+
+    public void setArchivage(int archivage) {
+        this.archivage = archivage;
     }
 
     @Basic

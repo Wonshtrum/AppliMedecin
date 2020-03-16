@@ -213,4 +213,15 @@ public class Controllers {
         obj.put("postulats",couple);
         return  obj.toJSONString();
     }
+
+    @GetMapping("/annoncesArchivees")
+    public String getAnnoncesArchivees(@RequestParam(name="info" ,required=true) String json)throws ParseException {
+        JSONObject obj = lireJson(json);
+        Pair<Integer,String>paire = myBddService.lireData(obj);
+        JSONObject newObj = new JSONObject();
+        newObj.put("archives",gson.toJson(myBddService.getOffreByIdClient(paire.getFirst())));
+        return newObj.toJSONString();
+    }
+
 }
+
