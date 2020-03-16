@@ -9,6 +9,7 @@ import android.widget.TextView
 import io.github.rybalkinsd.kohttp.dsl.httpGet
 import kotlinx.android.synthetic.main.activity_annonces.*
 import okhttp3.Response
+import org.json.JSONObject
 import java.net.URL
 
 class AnnoncesActivity : AppCompatActivity() {
@@ -38,8 +39,8 @@ class AnnoncesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
         DoAsync {
-            val req = SimpleRequest(SimpleRequestType.ANNONCES)
-            val res = req.send("/test2")
+            val req = SimpleRequest()
+            val res = req.send(RequestURL.TEST)
             bdd.addAll(res.split(","))
         }.execute()
 
@@ -62,13 +63,15 @@ class AnnoncesActivity : AppCompatActivity() {
             startActivity(Intent(this@AnnoncesActivity,MainActivity::class.java))
         }
         buttonCreate.setOnClickListener {
-            DoAsync {
-                val req = SimpleRequest(SimpleRequestType.CLIENT)
-                req.put("numTel", "06 06 06 06 06")
-                val response = req.send("/test3")
-                println(response)
-            }.execute()
             startActivity(Intent(this@AnnoncesActivity,AnnonceActivity::class.java))
         }
+
+        DoAsync {
+            var r = SimpleRequest()
+            r.put("mail", "yolo")
+            r.put("mdp", "yolo")
+            r.send(RequestURL.CONNECT)
+            SimpleRequest().send(RequestURL.ALL_OFFERS)
+        }.execute()
     }
 }
