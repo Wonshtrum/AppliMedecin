@@ -36,13 +36,6 @@ public class Controllers {
         this.myBddService = new BddService(clt,offre,postu,remplacant);
     }
 
-    @GetMapping("/test")
-    public SimpleResponse view() {
-        SimpleResponse res = new SimpleResponse();
-        res.put("test", "yolo");
-        return res;
-    }
-
     public JSONObject lireJson(String obj) throws ParseException {
        Object obj2 =parser.parse(obj);
         return (JSONObject) obj2;
@@ -54,15 +47,15 @@ public class Controllers {
         return new SimpleResponse(new TestJson(1, b, 5.5));
     }
 
-    @GetMapping("/test3")
-    public String testJSon(@RequestParam(name="json", required=true) String json) throws ParseException {
+    @GetMapping("/saveData")
+    public String testJSon(@RequestParam(name="data", required=true) String json) throws ParseException {
         JSONObject jj = lireJson(json);
         myBddService.saveData(jj);
         return "bonjour";
     }
 
     @GetMapping("/connexion")
-    public String connexion(@RequestParam(name="infoConnexion",required = true) String json) throws ParseException{
+    public String connexion(@RequestParam(name="data",required = true) String json) throws ParseException{
         JSONObject ja = lireJson(json);
         String mail = (String) ja.get("mail");
         String mdp = (String) ja.get("mdp");
@@ -74,7 +67,7 @@ public class Controllers {
     }
 
     @GetMapping("/requeteInfoLiee")
-    public String requeteInfoLiee(@RequestParam(name="infoLiee",required = true) String json) throws ParseException{
+    public String requeteInfoLiee(@RequestParam(name="data",required = true) String json) throws ParseException{
         JSONObject obj= lireJson(json);
         Pair<Integer,String> paire= myBddService.lireData(obj);
         switch (paire.getSecond()) {
@@ -116,7 +109,7 @@ public class Controllers {
     }
 
     @GetMapping("/requeteOffreLiee")
-    public String requeteOffreLiee(@RequestParam(name="infoLiee",required = true) String json) throws ParseException {
+    public String requeteOffreLiee(@RequestParam(name="data",required = true) String json) throws ParseException {
         JSONObject obj = lireJson(json);
         Pair<Integer, String> paire = myBddService.lireData(obj);
         if (paire.getSecond().equals("client")) {
@@ -156,7 +149,7 @@ public class Controllers {
     }
 
     @GetMapping("/supprimerChose")
-    public String SupprimerChose(@RequestParam(name="info" ,required=true) String json)throws ParseException{
+    public String SupprimerChose(@RequestParam(name="data" ,required=true) String json)throws ParseException{
         JSONObject obj = lireJson(json);
         Pair<Integer,String>paire = myBddService.lireData(obj);
         switch (paire.getSecond()){
@@ -199,7 +192,7 @@ public class Controllers {
     }
 
     @GetMapping("/candidatures")
-    public String recupCandidatures(@RequestParam(name="info" ,required=true) String json)throws ParseException {
+    public String recupCandidatures(@RequestParam(name="data" ,required=true) String json)throws ParseException {
         JSONObject obj = lireJson(json);
         Pair<Integer,String>paire = myBddService.lireData(obj);
         List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());

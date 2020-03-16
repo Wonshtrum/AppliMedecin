@@ -110,7 +110,7 @@ public class BddService {
         return obj;
     }
 
-    void saveData(JSONObject obj){
+    void saveData(JSONObject obj) {
         String type = (String) obj.get("type");
         switch (type){
             case "client":
