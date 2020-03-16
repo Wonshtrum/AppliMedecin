@@ -162,7 +162,7 @@ public class Controllers {
         switch (paire.getSecond()){
             case "offre":
                 if (myBddService.deleteByIdOffre(paire.getFirst())){
-                    return "true";
+                      return "true";
                 }
                 return "false";
             case "remplacant":
@@ -204,8 +204,6 @@ public class Controllers {
         Pair<Integer,String>paire = myBddService.lireData(obj);
         List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
         List<Pair<String,String>> couple = new ArrayList<>();
-        JSONArray pos = new JSONArray();
-        JSONArray candidat = new JSONArray();
         for(Offre o : offres){
             List<Postulat> listePos = myBddService.getPostulatByIdOffre(o.getIdOffre());
             for(Postulat postulat : listePos){
