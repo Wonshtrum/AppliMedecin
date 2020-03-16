@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import server.bdd.model.Client;
 import server.bdd.model.Offre;
+import server.bdd.model.Postulat;
 import server.bdd.model.Remplacant;
 import server.bdd.repository.ClientRepository;
 import server.bdd.repository.OffreRepository;
@@ -20,6 +21,8 @@ import server.json.SimpleResponse;
 import server.json.TestJson;
 import org.json.simple.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -183,4 +186,33 @@ public class Controllers {
 
     }
 
+    @GetMapping("/comptesAValider")
+    public String recupComptesAValider(){
+        List<Object> comptes = myBddService.getComptesAValider();
+        JSONObject obj = new JSONObject();
+        JSONArray jsComptes = new JSONArray();
+        for (Object o : comptes){
+            jsComptes.add(gson.toJson(o));
+        }
+        obj.put("comptes",jsComptes);
+        return obj.toJSONString();
+    }
+
+    @GetMapping("/candidatures")
+    public String recupCandidatures(@RequestParam(name="info" ,required=true) String json)throws ParseException {
+        JSONObject obj = lireJson(json);
+        Pair<Integer,String>paire = myBddService.lireData(obj);
+        List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
+        List<Pair<String,String>> couple = new ArrayList<>();
+        JSONArray pos = new JSONArray();
+        JSONArray candidat = new JSONArray();
+        for(Offre o : offres){
+            List<Postulat> listePos = myBddService.getPostulatByIdOffre(o.getIdOffre());
+            for(Postulat postulat : listePos){
+                couple.add(Pair.of(gson.toJson(o),gson.toJson(myBddService.getRemplacantByid(postulat.getIdRemplacant()))));
+            }
+        }
+        obj.put("postulats",couple);
+        return  obj.toJSONString();
+    }
 }
