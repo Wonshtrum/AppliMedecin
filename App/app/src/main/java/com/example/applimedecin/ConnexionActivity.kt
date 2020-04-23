@@ -12,6 +12,9 @@ class ConnexionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connexion)
         buttonConnexion.setOnClickListener{
+            DoAsync {
+                val res = RequestCatalog.connect("test@mail", "mdp")
+            }.execute()
             startActivity(Intent(this@ConnexionActivity, AnnoncesActivity::class.java))
         }
         retour.setOnClickListener{
