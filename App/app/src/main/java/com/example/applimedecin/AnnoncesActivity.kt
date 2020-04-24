@@ -39,18 +39,20 @@ class AnnoncesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
         DoAsync {
-            val req = SimpleRequest()
-            val res = req.send(RequestURL.TEST)
+            val res = RequestCatalog.getAllOffers().toString()
             bdd.addAll(res.split(","))
-        }.execute()
+            println(res)
+        }.waitUntil()
 
         for (i in 1..10) {
+            if (bdd.size == 0) break
             createBox()
         }
 
         scrollView.viewTreeObserver.addOnScrollChangedListener {
             if (!scrollView.canScrollVertically(1)) {
                 for (i in 1..5) {
+                    if (bdd.size == 0) break
                     createBox()
                 }
             }
@@ -65,13 +67,5 @@ class AnnoncesActivity : AppCompatActivity() {
         buttonCreate.setOnClickListener {
             startActivity(Intent(this@AnnoncesActivity,AnnonceActivity::class.java))
         }
-
-        DoAsync {
-            var r = SimpleRequest()
-            r.put("mail", "yolo")
-            r.put("mdp", "yolo")
-            r.send(RequestURL.CONNECT)
-            SimpleRequest().send(RequestURL.ALL_OFFERS)
-        }.execute()
     }
 }

@@ -5,14 +5,14 @@
     android:id="@+id/constraintLayoutFormulaireAutreA"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormulaireAutreAActivity">
+    tools:context=".FormulaireClientGeneral">
 
     <TextView
         android:id="@+id/textViewEtapeA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Etape 1 sur 8"
+        android:text="Etape 1 sur 3"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -25,7 +25,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:progress="12"
+        android:progress="33"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEtapeA" />
@@ -59,28 +59,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textOffreEtapeA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Type d'offres:"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/spinner"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:entries="@array/listeOffres"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textOffreEtapeA"
-                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeA" />
-
 
             <TextView
                 android:id="@+id/textViewMail"
@@ -88,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="Adresse-mail:"
+                android:text="Adresse-mail"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextMail"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -97,14 +75,15 @@
                 android:id="@+id/editTextMail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="exemple@mail.com"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/spinner"
-                app:layout_constraintTop_toBottomOf="@+id/spinner" />
+                app:layout_constraintStart_toEndOf="@+id/textNumTel2"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeA" />
 
             <TextView
                 android:id="@+id/textNumTel"
@@ -112,10 +91,34 @@
                 android:layout_height="21dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="N° téléphone:"
+                android:text="N° téléphone"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextNumTel"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textNumTel2"
+                android:layout_width="113dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Mot de passe"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextMDP"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextMDP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/editTextMail"
+                app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
 
             <EditText
                 android:id="@+id/editTextNumTel"
@@ -127,8 +130,8 @@
                 android:hint="0606060606"
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editTextMail"
-                app:layout_constraintTop_toBottomOf="@+id/editTextMail" />
+                app:layout_constraintStart_toStartOf="@+id/editTextMDP"
+                app:layout_constraintTop_toBottomOf="@+id/editTextMDP" />
 
             <TextView
                 android:id="@+id/textAdresse"
@@ -136,7 +139,7 @@
                 android:layout_height="21dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="Adresse:"
+                android:text="Adresse"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextAdresse"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -159,21 +162,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:enabled="false"
                 android:text="Suivant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switchAssociation" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextKMMax" />
 
-            <Switch
-                android:id="@+id/switchAssociation"
-                android:layout_width="247dp"
-                android:layout_height="6dp"
-                android:layout_marginTop="30dp"
-                android:text="Activité en Association?"
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="KM max"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextKMMax"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextKMMax"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/editTextAdresse"
                 app:layout_constraintTop_toBottomOf="@+id/editTextAdresse" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

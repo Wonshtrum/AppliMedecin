@@ -9,11 +9,12 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FFFFFF"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonProfil">
 
@@ -33,25 +34,29 @@
         android:background="#FF4444"
         android:text="Créer Annonce"
         app:layout_constraintEnd_toStartOf="@+id/buttonProfil"
+        app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonAnnoncesRetour"
-        android:layout_width="122dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#FF4444"
         android:text="Déconnexion"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toEndOf="@+id/buttonProfil"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonProfil"
-        android:layout_width="116dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#FF4444"
         android:text="Profil"
         app:layout_constraintEnd_toStartOf="@+id/buttonAnnoncesRetour"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toEndOf="@+id/buttonCreate"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
