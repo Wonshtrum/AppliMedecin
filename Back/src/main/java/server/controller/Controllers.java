@@ -24,6 +24,7 @@ import org.json.simple.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @ResponseBody
@@ -83,7 +84,7 @@ public class Controllers {
                 newData.put("spec", r.getSpec());
                 newData.put("cvFilename", r.getCvFilename());
                 newData.put("description", r.getDescription());
-                newData.put("carteProFilename", r.getCarteProFilename());
+                newData.put("carteProFilename", r.getCartePro_filename());
                 newData.put("mdp", r.getMdp());
                 return newData.toJSONString();
             }
@@ -91,14 +92,16 @@ public class Controllers {
                 Client c = myBddService.getClientById(paire.getFirst());
                 JSONObject newData = new JSONObject();
                 newData.put("idClient", c.getIdClient());
-                newData.put("typeOffre", c.getTypeOffre());
+                newData.put("secretariat", c.getSecretariat());
+                newData.put("dispoSec", c.getDispoSec());
+                newData.put("specialite", c.getSpecialite());
                 newData.put("mail", c.getMail());
                 newData.put("mdp", c.getMdp());
                 newData.put("kmMax", c.getKmMax());
                 newData.put("numTel", c.getNumTel());
                 newData.put("zoneGeo", c.getZoneGeo());
                 newData.put("adresse", c.getAdresse());
-                newData.put("periode", c.getPeriode());
+                newData.put("cartePro_filename", c.getCartePro_filename());
                 return newData.toJSONString();
             }
             case "offre":
@@ -155,7 +158,7 @@ public class Controllers {
         switch (paire.getSecond()){
             case "offre":
                 if (myBddService.deleteByIdOffre(paire.getFirst())){
-                    return "true";
+                      return "true";
                 }
                 return "false";
             case "remplacant":
@@ -197,8 +200,6 @@ public class Controllers {
         Pair<Integer,String>paire = myBddService.lireData(obj);
         List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
         List<Pair<String,String>> couple = new ArrayList<>();
-        JSONArray pos = new JSONArray();
-        JSONArray candidat = new JSONArray();
         for(Offre o : offres){
             List<Postulat> listePos = myBddService.getPostulatByIdOffre(o.getIdOffre());
             for(Postulat postulat : listePos){
@@ -208,4 +209,17 @@ public class Controllers {
         obj.put("postulats",couple);
         return  obj.toJSONString();
     }
+
+    @GetMapping("/annoncesArchivees")
+    public String getAnnoncesArchivees(@RequestParam(name="data" ,required=true) String json)throws ParseException {
+        JSONObject obj = lireJson(json);
+        Pair<Integer,String>paire = myBddService.lireData(obj);
+        JSONObject newObj = new JSONObject();
+        List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
+        offres = offres.stream().filter(offre -> offre.getArchivage()!=0).collect(Collectors.toList());
+        newObj.put("archivage",offres);
+        return newObj.toJSONString();
+    }
+
 }
+
