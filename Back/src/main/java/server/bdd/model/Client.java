@@ -18,6 +18,7 @@ public class Client {
     private String specialite;
     private String mdp;
     private String cartePro_filename;
+    private Short activite;
 
     @Id
     @Column(name = "id_client", nullable = false)
@@ -37,6 +38,16 @@ public class Client {
 
     public void setSecretariat(Short secretariat) {
         this.secretariat = secretariat;
+    }
+
+    @Basic
+    @Column(name = "activite", nullable = true)
+    public Short getActivite() {
+        return activite;
+    }
+
+    public void setActivite(Short activite) {
+        this.activite = activite;
     }
 
     @Basic
@@ -138,6 +149,7 @@ public class Client {
 
         if (idClient != client.idClient) return false;
         if (secretariat != null ? !secretariat.equals(client.secretariat) : client.secretariat != null) return false;
+        if (activite != null ? !activite.equals(client.activite) : client.activite != null) return false;
         if (mail != null ? !mail.equals(client.mail) : client.mail != null) return false;
         if (numTel != null ? !numTel.equals(client.numTel) : client.numTel != null) return false;
         if (adresse != null ? !adresse.equals(client.adresse) : client.adresse != null) return false;
@@ -162,7 +174,9 @@ public class Client {
         result = 31 * result + (zoneGeo != null ? zoneGeo.hashCode() : 0);
         result = 31 * result + (kmMax != null ? kmMax.hashCode() : 0);
         result = 31 * result + (specialite != null ? specialite.hashCode() : 0);
+        result = 31 * result + (mdp != null ? mdp.hashCode() : 0);
         result = 31 * result + (cartePro_filename != null ? cartePro_filename.hashCode() : 0);
+        result = 31 * result + (activite != null ? activite.hashCode() : 0);
         return result;
     }
 }

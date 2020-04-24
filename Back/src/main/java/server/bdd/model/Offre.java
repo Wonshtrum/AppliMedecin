@@ -12,7 +12,6 @@ public class Offre {
     private Short typeOffre;
     private Integer visiteDomicile;
     private Integer archivage;
-    private Byte activite;
     private String horaire;
     private String logicielUtilise;
     private String retrocession;
@@ -70,15 +69,6 @@ public class Offre {
         this.visiteDomicile = visiteDomicile;
     }
 
-    @Basic
-    @Column(name = "activite", nullable = true)
-    public Byte getActivite() {
-        return activite;
-    }
-
-    public void setActivite(Byte activite) {
-        this.activite = activite;
-    }
 
     @Basic
     @Column(name = "horaire", nullable = true, length = 255)
@@ -153,7 +143,7 @@ public class Offre {
         if (typeOffre != null ? !typeOffre.equals(offre.typeOffre) : offre.typeOffre != null) return false;
         if (visiteDomicile != null ? !visiteDomicile.equals(offre.visiteDomicile) : offre.visiteDomicile != null)
             return false;
-        if (activite != null ? !activite.equals(offre.activite) : offre.activite != null) return false;
+
         if (horaire != null ? !horaire.equals(offre.horaire) : offre.horaire != null) return false;
         if (logicielUtilise != null ? !logicielUtilise.equals(offre.logicielUtilise) : offre.logicielUtilise != null)
             return false;
@@ -170,7 +160,6 @@ public class Offre {
         int result = idOffre;
         result = 31 * result + (typeOffre != null ? typeOffre.hashCode() : 0);
         result = 31 * result + (visiteDomicile != null ? visiteDomicile.hashCode() : 0);
-        result = 31 * result + (activite != null ? activite.hashCode() : 0);
         result = 31 * result + (horaire != null ? horaire.hashCode() : 0);
         result = 31 * result + (logicielUtilise != null ? logicielUtilise.hashCode() : 0);
         result = 31 * result + (retrocession != null ? retrocession.hashCode() : 0);

@@ -16,7 +16,7 @@ public class Remplacant {
     private String spec;
     private String description;
     private String cvFilename;
-    private String carteProFilename;
+    private String cartePro_filename;
     private String mdp;
 
     @Id
@@ -120,13 +120,13 @@ public class Remplacant {
     }
 
     @Basic
-    @Column(name = "carte_pro_filename", nullable = true, length = 255)
-    public String getCarteProFilename() {
-        return carteProFilename;
+    @Column(name = "cartePro_filename", nullable = true, length = 255)
+    public String getCartePro_filename() {
+        return cartePro_filename;
     }
 
-    public void setCarteProFilename(String carteProFilename) {
-        this.carteProFilename = carteProFilename;
+    public void setCartePro_filename(String carteProFilename) {
+        this.cartePro_filename = cartePro_filename;
     }
 
     @Override
@@ -145,7 +145,7 @@ public class Remplacant {
         if (spec != null ? !spec.equals(that.spec) : that.spec != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
         if (cvFilename != null ? !cvFilename.equals(that.cvFilename) : that.cvFilename != null) return false;
-        if (carteProFilename != null ? !carteProFilename.equals(that.carteProFilename) : that.carteProFilename != null)
+        if (cartePro_filename != null ? !cartePro_filename.equals(that.cartePro_filename) : that.cartePro_filename != null)
             return false;
         if (mdp != null ? !mdp.equals(that.mdp) : that.mdp != null) return false;
 
@@ -163,7 +163,7 @@ public class Remplacant {
         result = 31 * result + (spec != null ? spec.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (cvFilename != null ? cvFilename.hashCode() : 0);
-        result = 31 * result + (carteProFilename != null ? carteProFilename.hashCode() : 0);
+        result = 31 * result + (cartePro_filename != null ? cartePro_filename.hashCode() : 0);
         return result;
     }
 }

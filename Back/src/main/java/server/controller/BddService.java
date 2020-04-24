@@ -124,6 +124,8 @@ public class BddService {
                 c.setMail((String) obj.get("mail"));
                 c.setSpecialite((String) obj.get("specialite"));
                 c.setSecretariat(Short.parseShort((String) obj.get("secretariat")));
+                c.setActivite(Short.parseShort((String) obj.get("activite")));
+                c.setMdp((String) obj.get("mdp"));
                 c.setDispoSec(Short.parseShort((String) obj.get("dispoSec")));
                 c.setZoneGeo((String) obj.get("zoneGeo"));
                 c.setCartePro_filename((String) obj.get("cartePro_filename"));
@@ -136,7 +138,6 @@ public class BddService {
                     o = myOffre.findByIdOffre(Integer.parseInt((String)obj.get("idOffre")));
                 }
                 o.setIdClient((Integer.parseInt((String) obj.get("idClient"))));
-                o.setActivite(Byte.parseByte((String) obj.get("activite")));
                 o.setPeriode((String) obj.get("periode"));
                 o.setDescription((String) obj.get("description"));
                 o.setHoraire((String) obj.get("horaire"));
@@ -161,12 +162,13 @@ public class BddService {
                 if (myRemplacant.existsByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")))){
                     myRemplacant.findByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")));
                 }
-                r.setCarteProFilename((String) obj.get("carteProFilename"));
+                r.setCartePro_filename((String) obj.get("cartePro_filename"));
                 r.setCvFilename((String) obj.get("cvFilename"));
                 r.setDescription((String) obj.get("description"));
                 r.setDispo((String) obj.get("dispo"));
                 r.setKmMax(Integer.parseInt((String) obj.get("kmMax")));
                 r.setMail((String) obj.get("mail"));
+                r.setMdp((String) obj.get("mdp"));
                 r.setNumTel((String) obj.get("numTel"));
                 r.setSpec((String) obj.get("spec"));
                 r.setZoneGeo((String) obj.get("zoneGeo"));
