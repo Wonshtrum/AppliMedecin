@@ -23,14 +23,9 @@
         <activity android:name=".FormulaireRemplacantActivityC" />
         <activity android:name=".FormulaireRemplacantActivityD" />
         <activity android:name=".FormulaireRemplacantActivityE" />
-        <activity android:name=".FormulaireAutreAActivity" />
-        <activity android:name=".FormulaireAutreBActivity" />
-        <activity android:name=".FormulaireAutreCActivity" />
-        <activity android:name=".FormulaireAutreDActivity" />
-        <activity android:name=".FormulaireAutreEActivity" />
-        <activity android:name=".FormulaireAutreFActivity" />
-        <activity android:name=".FormulaireAutreGActivity" />
-        <activity android:name=".FormulaireAutreHActivity" />
+        <activity android:name=".FormulaireClientGeneral" />
+        <activity android:name=".FormulaireClientActivite" />
+        <activity android:name=".FormulaireClientCarte" />
         <activity android:name=".FormulaireActivity" />
         <activity android:name=".AnnonceActivity" />
         <activity android:name=".FormulaireAdminActivity" />

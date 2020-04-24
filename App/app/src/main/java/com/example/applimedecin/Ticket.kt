@@ -7,8 +7,15 @@ object TicketManager {
     fun deconnect() {
         ticket = Ticket(TypeTicket.EMPTY, -1, -1)
     }
-    fun connect(json: JSONObject) {
-        ticket = Ticket(json.getString("type"), json.getInt("id"), json.getLong("security"))
+    fun connect(json: JSONObject?): Boolean {
+        return if (json == null) {
+            false
+        } else if (json.has("type") && json.has("id") && json.has("security")) {
+            ticket = Ticket(json.getString("type"), json.getInt("id"), json.getLong("security"))
+            true
+        } else {
+            false
+        }
     }
 }
 

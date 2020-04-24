@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Etape 7 sur 8"
+        android:text="Etape 3 sur 3"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -24,7 +24,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:progress="87"
+        android:progress="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEtapeG" />
@@ -49,40 +49,30 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
+                android:text="Pièce-jointe"
                 android:textAlignment="center"
-                android:text="Pièces-jointes"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-        
-            <Button
-                android:id="@+id/boutonCV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="Ajouter CV (optionnel)"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeG" />
 
             <Button
                 android:id="@+id/boutonCarte"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:text="Ajouter carte médecin"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/boutonCV" />
-        
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeG" />
+
             <Button
                 android:id="@+id/boutonSuivantG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Suivant"
+                android:text="Finir"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/boutonCarte" />

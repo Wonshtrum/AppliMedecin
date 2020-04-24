@@ -39,21 +39,20 @@ class AnnoncesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
         DoAsync {
-            val res = RequestCatalog.getAllOffers()
+            val res = RequestCatalog.getAllOffers().toString()
             bdd.addAll(res.split(","))
-        }.execute()
+            println(res)
+        }.waitUntil()
 
-        while(bdd.size == 0) {
-            Thread.sleep(100)
-        }
         for (i in 1..10) {
-            createBox()
             if (bdd.size == 0) break
+            createBox()
         }
 
         scrollView.viewTreeObserver.addOnScrollChangedListener {
             if (!scrollView.canScrollVertically(1)) {
                 for (i in 1..5) {
+                    if (bdd.size == 0) break
                     createBox()
                 }
             }

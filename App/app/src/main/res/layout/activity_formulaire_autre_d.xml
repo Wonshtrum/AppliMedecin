@@ -43,6 +43,28 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/textOffreEtapeA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Type d'offres:"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/spinner"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="16dp"
+                android:entries="@array/listeOffres"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textOffreEtapeA"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeA" />
+
+            <TextView
                 android:id="@+id/textTitreEtapeD"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -57,31 +79,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <EditText
-                android:id="@+id/editTextKMMax"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeD" />
-
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="10dp"
-                android:text="KM max:"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextKMMax"
-                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -98,11 +95,10 @@
                 android:id="@+id/switchVisite"
                 android:layout_width="60dp"
                 android:layout_height="15dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextKMMax" />
+                tools:layout_editor_absoluteY="163dp" />
 
 
             <EditText
@@ -117,7 +113,6 @@
                 android:inputType="number"
                 android:text="0"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editTextKMMax"
                 app:layout_constraintTop_toBottomOf="@+id/switchVisite" />
 
             <TextView

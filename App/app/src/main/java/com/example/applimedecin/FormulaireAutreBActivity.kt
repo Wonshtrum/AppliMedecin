@@ -1,20 +1,19 @@
 package com.example.applimedecin
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_formulaire.*
-import kotlinx.android.synthetic.main.activity_formulaire_autre_a.*
-import kotlinx.android.synthetic.main.activity_formulaire_autre_b.*
+import kotlinx.android.synthetic.main.activity_offre_debut.*
 
 class FormulaireAutreBActivity : AppCompatActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formulaire_autre_b)
-        boutonSuivantB.setOnClickListener {
+        setContentView(R.layout.activity_offre_debut)
 
-            startActivity(Intent(this@FormulaireAutreBActivity,FormulaireAutreCActivity::class.java))
+        boutonSuivantB.setOnClickListener {
+            intent.setClass(this@FormulaireAutreBActivity,FormulaireAutreCActivity::class.java)
+            intent.putExtra("date1", calendarViewDebut.date.toString())
+            startActivity(intent)
         }
     }
 }

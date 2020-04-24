@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayoutFormulaireAutreG"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormulaireAutreHActivity">
+    tools:context=".FormulaireClientCarte">
 
     <TextView
         android:id="@+id/textViewEtapeH"

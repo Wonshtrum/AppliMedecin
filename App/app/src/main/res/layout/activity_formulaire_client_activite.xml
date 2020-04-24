@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Etape 6 sur 8"
+        android:text="Etape 2 sur 3"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -25,7 +25,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:progress="75"
+        android:progress="66"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEtapeF" />
@@ -60,28 +60,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/textOffreEtapeF"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Type patientèle:"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/spinnerPatientèle"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Spinner
-                android:id="@+id/spinnerPatientèle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:entries="@array/listePatientèle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textOffreEtapeF"
-                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeF" />
-
 
             <TextView
                 android:id="@+id/textViewDomaine"
@@ -89,7 +67,7 @@
                 android:layout_height="21dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="Type d'activité:"
+                android:text="Spécialité"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextDomaine"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -98,35 +76,14 @@
                 android:id="@+id/editTextDomaine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
+                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/spinnerPatientèle"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerPatientèle" />
-
-            <TextView
-                android:id="@+id/textRémunération"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="10dp"
-                android:text="Rémunération:"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextRémunération"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <EditText
-                android:id="@+id/editTextRémunération"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editTextDomaine"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDomaine" />
+                app:layout_constraintStart_toEndOf="@+id/textViewDomaine"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeF" />
 
 
             <Button
@@ -146,11 +103,21 @@
                 android:layout_width="247dp"
                 android:layout_height="6dp"
                 android:layout_marginTop="20dp"
-                android:text="Secrétariat?"
+                android:text="Secrétariat ?"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRémunération" />
+                app:layout_constraintTop_toBottomOf="@+id/switchAssociation2" />
+
+            <Switch
+                android:id="@+id/switchAssociation2"
+                android:layout_width="247dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="20dp"
+                android:text="Activité en Association ?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDomaine" />
 
             <TextView
                 android:id="@+id/textSecrétariat"
@@ -172,7 +139,7 @@
                 android:enabled="false"
                 android:entries="@array/listeSecrétariat"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editTextRémunération"
+                app:layout_constraintStart_toStartOf="@+id/editTextDomaine"
                 app:layout_constraintTop_toBottomOf="@+id/switchSecrétariat" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

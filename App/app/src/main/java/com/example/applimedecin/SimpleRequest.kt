@@ -5,7 +5,10 @@ import org.json.JSONObject
 import java.lang.Exception
 import java.util.HashMap
 
-class SimpleRequest(private val content: JSONObject = JSONObject(), private val ticket: JSONObject = JSONObject()) {
+class SimpleRequest(private val content: JSONObject = JSONObject(),
+                    private val ticket: JSONObject = JSONObject(),
+                    private var result: String = "",
+                    private var sucess: Boolean = false) {
 
     fun put(key: String, value: String) {
         content.put(key, value)
@@ -18,7 +21,7 @@ class SimpleRequest(private val content: JSONObject = JSONObject(), private val 
         return this
     }
 
-    fun send(url: String): String {
+    fun send(url: String): SimpleRequest {
         val jsonContent = content.toString()
         val jsonTicket = content.toString()
         println("           HTTP REQUEST to $url: $jsonContent\n")
@@ -32,84 +35,93 @@ class SimpleRequest(private val content: JSONObject = JSONObject(), private val 
                     "ticket" to jsonTicket
                 }
             }.body()
-            val res = body?.string().orEmpty()
-            println("           GET ($url): $res")
-            return res
+            result = body?.string().orEmpty()
+            println("           GET ($url): $result")
+            return this
         } catch (exception: Exception) {
             println("           NO CONNECTION ($url)")
-            return "Connexion Impossible"
+            result = "Connexion Impossible"
+            return this
+        }
+    }
+
+    fun toJSON(): JSONObject {
+        return if (sucess) {
+            JSONObject(result)
+        } else {
+            JSONObject()
         }
     }
 
     override fun toString(): String {
-        return content.toString()
+        return result
     }
 }
 
 object RequestCatalog {
-    fun connect(mail:String, mdp:String): String {
+    fun connect(mail:String, mdp:String): JSONObject {
         val data = JSONObject()
         data.put("mail", mail)
         data.put("mdp", mdp)
-        return SimpleRequest(data).send(RequestURL.CONNECT)
+        return SimpleRequest(data).send(RequestURL.CONNECT).toJSON()
     }
 
-    fun getAllOffers(): String {
-        return SimpleRequest().addTicket().send(RequestURL.ALL_OFFERS)
+    fun getAllOffers(): JSONObject {
+        return SimpleRequest().addTicket().send(RequestURL.ALL_OFFERS).toJSON()
     }
 
-    fun connexion(mail:String, mdp:String): String {
+    fun connexion(mail:String, mdp:String): JSONObject {
         val data = JSONObject()
         data.put("mail", mail)
         data.put("mdp", mdp)
-        return SimpleRequest(data).send(RequestURL.CONNECT)
+        return SimpleRequest(data).send(RequestURL.CONNECT).toJSON()
     }
 
-    fun requeteInfoLiee(id:String, type:String): String {
+    fun requeteInfoLiee(id:String, type:String): JSONObject {
         val data = JSONObject()
         data.put("id", id)
         data.put("type", type)
-        return SimpleRequest(data).addTicket().send(RequestURL.LINKED_INFO)
+        return SimpleRequest(data).addTicket().send(RequestURL.LINKED_INFO).toJSON()
     }
 
-    fun requeteOffreLiee(id:String, type:String): String {
+    fun requeteOffreLiee(id:String, type:String): JSONObject {
         val data = JSONObject()
         data.put("id", id)
         data.put("type", type)
-        return SimpleRequest(data).addTicket().send(RequestURL.LINKED_OFFER)
+        return SimpleRequest(data).addTicket().send(RequestURL.LINKED_OFFER).toJSON()
     }
 
-    fun requeteOffres(): String {
-        return SimpleRequest().addTicket().send(RequestURL.ALL_OFFERS)
+    fun requeteOffres(): JSONObject {
+        return SimpleRequest().addTicket().send(RequestURL.ALL_OFFERS).toJSON()
     }
 
-    fun SupprimerChose(id:String, type:String): String {
+    fun SupprimerChose(id:String, type:String): JSONObject {
         val data = JSONObject()
         data.put("id", id)
         data.put("type", type)
-        return SimpleRequest(data).addTicket().send(RequestURL.DELETE)
+        return SimpleRequest(data).addTicket().send(RequestURL.DELETE).toJSON()
     }
 
-    fun recupComptesAValider(): String {
-        return SimpleRequest().addTicket().send(RequestURL.WAITING_ACCOUNTS)
+    fun recupComptesAValider(): JSONObject {
+        return SimpleRequest().addTicket().send(RequestURL.WAITING_ACCOUNTS).toJSON()
     }
 
-    fun recupCandidatures(id:String, type:String): String {
+    fun recupCandidatures(id:String, type:String): JSONObject {
         val data = JSONObject()
         data.put("id", id)
         data.put("type", type)
-        return SimpleRequest(data).addTicket().send(RequestURL.CANDIDATE)
+        return SimpleRequest(data).addTicket().send(RequestURL.CANDIDATE).toJSON()
     }
 
-    fun getAnnoncesArchivees(id:String, type:String): String {
+    fun getAnnoncesArchivees(id:String, type:String): JSONObject {
         val data = JSONObject()
         data.put("id", id)
         data.put("type", type)
-        return SimpleRequest(data).addTicket().send(RequestURL.ARCHIVES)
+        return SimpleRequest(data).addTicket().send(RequestURL.ARCHIVES).toJSON()
     }
 
     fun saveDataClient(idClient:String, numTel:String, adresse:String, kmMax:String, mail:String,
-                       periode:String, typeOffre:String, zoneGeo:String): String {
+                       periode:String, typeOffre:String, zoneGeo:String): JSONObject {
         val data = JSONObject()
         data.put("type", "client")
         data.put("idClient", idClient)
@@ -120,13 +132,13 @@ object RequestCatalog {
         data.put("periode", periode)
         data.put("typeOffre", typeOffre)
         data.put("zoneGeo", zoneGeo)
-        return SimpleRequest(data).addTicket().send(RequestURL.SAVE)
+        return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
     fun saveDataOffre(idOffre:String, idClient:String, activite:String, carteProFilename:String,
                       description:String, dispoSec:String, horaire:String, logicielUtilise:String,
                       retrocession:String, secretariat:String, spec:String, typeOffre:String,
-                      typePatient:String, visiteDomicile:String): String {
+                      typePatient:String, visiteDomicile:String): JSONObject {
         val data = JSONObject()
         data.put("type", "offre")
         data.put("idOffre", idOffre)
@@ -143,21 +155,21 @@ object RequestCatalog {
         data.put("typeOffre", typeOffre)
         data.put("typePatient", typePatient)
         data.put("visiteDomicile", visiteDomicile)
-        return SimpleRequest(data).addTicket().send(RequestURL.SAVE)
+        return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
-    fun saveDataPostulat(idPostulat:String, idOffre:String, idRemplacant:String): String {
+    fun saveDataPostulat(idPostulat:String, idOffre:String, idRemplacant:String): JSONObject {
         val data = JSONObject()
         data.put("type", "postulat")
         data.put("idPostulat", idPostulat)
         data.put("idOffre", idOffre)
         data.put("idRemplacant", idRemplacant)
-        return SimpleRequest(data).addTicket().send(RequestURL.SAVE)
+        return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
     fun saveDataRemplacant(idRemplacant:String, carteProFilename:String, cvFilename:String,
                            description:String, dispo:String, kmMax:String, mail:String,
-                           numTel:String, spec:String, zoneGeo:String): String {
+                           numTel:String, spec:String, zoneGeo:String): JSONObject {
         val data = JSONObject()
         data.put("type", "remplacant")
         data.put("idRemplacant", idRemplacant)
@@ -170,7 +182,7 @@ object RequestCatalog {
         data.put("numTel", numTel)
         data.put("spec", spec)
         data.put("zoneGeo", zoneGeo)
-        return SimpleRequest(data).addTicket().send(RequestURL.SAVE)
+        return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 }
 
