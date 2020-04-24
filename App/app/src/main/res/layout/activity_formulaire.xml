@@ -57,10 +57,13 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="30dp"
-                android:text="Quelle type de compte voulez vous créer ?"
+                android:layout_marginEnd="10dp"
+                android:text="Quel type de compte voulez vous créer ?"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -122,9 +122,14 @@ public class BddService {
                 c.setAdresse((String) obj.get("adresse"));
                 c.setKmMax( Integer.parseInt((String)obj.get("kmMax")));
                 c.setMail((String) obj.get("mail"));
-                c.setPeriode((String) obj.get("periode"));
-                c.setTypeOffre(Short.parseShort((String) obj.get("typeOffre")));
+                c.setSpecialite((String) obj.get("specialite"));
+                c.setSecretariat(Short.parseShort((String) obj.get("secretariat")));
+                c.setActivite(Short.parseShort((String) obj.get("activite")));
+                c.setMdp((String) obj.get("mdp"));
+                c.setDispoSec(Short.parseShort((String) obj.get("dispoSec")));
                 c.setZoneGeo((String) obj.get("zoneGeo"));
+                c.setCartePro_filename((String) obj.get("cartePro_filename"));
+
                 myClient.save(c);
                 break;
             case "offre":
@@ -133,15 +138,11 @@ public class BddService {
                     o = myOffre.findByIdOffre(Integer.parseInt((String)obj.get("idOffre")));
                 }
                 o.setIdClient((Integer.parseInt((String) obj.get("idClient"))));
-                o.setActivite(Byte.parseByte((String) obj.get("activite")));
-                o.setCarteProFilename((String) obj.get("carteProFilename"));
+                o.setPeriode((String) obj.get("periode"));
                 o.setDescription((String) obj.get("description"));
-                o.setDispoSec((String) obj.get("dispoSec"));
                 o.setHoraire((String) obj.get("horaire"));
                 o.setLogicielUtilise((String) obj.get("logicielUtilise"));
                 o.setRetrocession((String) obj.get("retrocession"));
-                o.setSecretariat(Byte.parseByte((String) obj.get("secretariat")));
-                o.setSpec((String) obj.get("spec"));
                 o.setTypeOffre(Short.parseShort((String) obj.get("typeOffre")));
                 o.setTypePatient((String) obj.get("typePatient"));
                 o.setVisiteDomicile(Integer.parseInt((String) obj.get("visiteDomicile")));
@@ -161,12 +162,13 @@ public class BddService {
                 if (myRemplacant.existsByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")))){
                     myRemplacant.findByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")));
                 }
-                r.setCarteProFilename((String) obj.get("carteProFilename"));
+                r.setCartePro_filename((String) obj.get("cartePro_filename"));
                 r.setCvFilename((String) obj.get("cvFilename"));
                 r.setDescription((String) obj.get("description"));
                 r.setDispo((String) obj.get("dispo"));
                 r.setKmMax(Integer.parseInt((String) obj.get("kmMax")));
                 r.setMail((String) obj.get("mail"));
+                r.setMdp((String) obj.get("mdp"));
                 r.setNumTel((String) obj.get("numTel"));
                 r.setSpec((String) obj.get("spec"));
                 r.setZoneGeo((String) obj.get("zoneGeo"));

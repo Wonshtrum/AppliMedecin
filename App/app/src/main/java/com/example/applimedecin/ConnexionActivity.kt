@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_connexion.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class ConnexionActivity : AppCompatActivity() {
 
@@ -12,7 +11,12 @@ class ConnexionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connexion)
         buttonConnexion.setOnClickListener{
-            startActivity(Intent(this@ConnexionActivity, AnnoncesActivity::class.java))
+            val newTicket = DoAsync {
+                RequestCatalog.connect(editTextMail.text.toString(), editTextMotDePasse.text.toString())
+            }.waitUntil()
+            if (TicketManager.connect(newTicket) || true) {
+                startActivity(Intent(this@ConnexionActivity, AnnoncesActivity::class.java))
+            }
         }
         retour.setOnClickListener{
             startActivity(Intent(this@ConnexionActivity, MainActivity::class.java))

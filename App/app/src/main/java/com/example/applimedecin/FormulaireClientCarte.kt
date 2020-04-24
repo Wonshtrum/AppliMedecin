@@ -2,17 +2,16 @@ package com.example.applimedecin
 
 import android.os.Bundle
 import android.content.Intent
-import android.view.View
-import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_formulaire_autre_h.*
+import kotlinx.android.synthetic.main.activity_formulaire_client_carte.*
 
-class FormulaireAutreHActivity: AppCompatActivity() {
+class FormulaireClientCarte: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formulaire_autre_h)
-        boutonSuivantH.setOnClickListener {
-            startActivity(Intent(this@FormulaireAutreHActivity, MainActivity::class.java))
+        setContentView(R.layout.activity_formulaire_client_carte)
+        boutonSuivantG.setOnClickListener {
+            startActivity(Intent(this@FormulaireClientCarte, MainActivity::class.java))
         }
     }
 }

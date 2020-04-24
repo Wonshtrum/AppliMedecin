@@ -2,9 +2,11 @@ package server.controller;
 
 
 import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.data.util.Pair;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,9 +23,11 @@ import server.json.SimpleResponse;
 import server.json.TestJson;
 import org.json.simple.*;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @ResponseBody
@@ -83,7 +87,7 @@ public class Controllers {
                 newData.put("spec", r.getSpec());
                 newData.put("cvFilename", r.getCvFilename());
                 newData.put("description", r.getDescription());
-                newData.put("carteProFilename", r.getCarteProFilename());
+                newData.put("carteProFilename", r.getCartePro_filename());
                 newData.put("mdp", r.getMdp());
                 return newData.toJSONString();
             }
@@ -91,14 +95,16 @@ public class Controllers {
                 Client c = myBddService.getClientById(paire.getFirst());
                 JSONObject newData = new JSONObject();
                 newData.put("idClient", c.getIdClient());
-                newData.put("typeOffre", c.getTypeOffre());
+                newData.put("secretariat", c.getSecretariat());
+                newData.put("dispoSec", c.getDispoSec());
+                newData.put("specialite", c.getSpecialite());
                 newData.put("mail", c.getMail());
                 newData.put("mdp", c.getMdp());
                 newData.put("kmMax", c.getKmMax());
                 newData.put("numTel", c.getNumTel());
                 newData.put("zoneGeo", c.getZoneGeo());
                 newData.put("adresse", c.getAdresse());
-                newData.put("periode", c.getPeriode());
+                newData.put("cartePro_filename", c.getCartePro_filename());
                 return newData.toJSONString();
             }
             case "offre":
@@ -136,6 +142,13 @@ public class Controllers {
         }
     }
 
+    @GetMapping(value = "/getPdf", produces = MediaType.APPLICATION_PDF_VALUE)
+    public @ResponseBody byte[] getPDF(@RequestParam(name="filename", required = true) String name) throws IOException {
+        String chemin = "resources/" + name;
+        InputStream in = getClass().getResourceAsStream(chemin);
+        return IOUtils.toByteArray(in);
+    }
+
     @GetMapping("/requeteOffres")
     public String requeteOffres() {
         List<Offre> offres = myBddService.getAllOffres();
@@ -155,7 +168,7 @@ public class Controllers {
         switch (paire.getSecond()){
             case "offre":
                 if (myBddService.deleteByIdOffre(paire.getFirst())){
-                    return "true";
+                      return "true";
                 }
                 return "false";
             case "remplacant":
@@ -197,8 +210,6 @@ public class Controllers {
         Pair<Integer,String>paire = myBddService.lireData(obj);
         List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
         List<Pair<String,String>> couple = new ArrayList<>();
-        JSONArray pos = new JSONArray();
-        JSONArray candidat = new JSONArray();
         for(Offre o : offres){
             List<Postulat> listePos = myBddService.getPostulatByIdOffre(o.getIdOffre());
             for(Postulat postulat : listePos){
@@ -208,4 +219,17 @@ public class Controllers {
         obj.put("postulats",couple);
         return  obj.toJSONString();
     }
+
+    @GetMapping("/annoncesArchivees")
+    public String getAnnoncesArchivees(@RequestParam(name="data" ,required=true) String json)throws ParseException {
+        JSONObject obj = lireJson(json);
+        Pair<Integer,String>paire = myBddService.lireData(obj);
+        JSONObject newObj = new JSONObject();
+        List<Offre> offres = myBddService.getOffreByIdClient(paire.getFirst());
+        offres = offres.stream().filter(offre -> offre.getArchivage()!=0).collect(Collectors.toList());
+        newObj.put("archivage",offres);
+        return newObj.toJSONString();
+    }
+
 }
+
