@@ -16,12 +16,9 @@ public class Offre {
     private String horaire;
     private String logicielUtilise;
     private String retrocession;
-    private Byte secretariat;
-    private String dispoSec;
     private String typePatient;
-    private String spec;
     private String description;
-    private String carteProFilename;
+    private String periode;
 
     @Id
     @Column(name = "id_offre", nullable = false)
@@ -113,24 +110,15 @@ public class Offre {
         this.retrocession = retrocession;
     }
 
-    @Basic
-    @Column(name = "secretariat", nullable = true)
-    public Byte getSecretariat() {
-        return secretariat;
-    }
-
-    public void setSecretariat(Byte secretariat) {
-        this.secretariat = secretariat;
-    }
 
     @Basic
-    @Column(name = "dispo_sec", nullable = true, length = 255)
-    public String getDispoSec() {
-        return dispoSec;
+    @Column(name = "periode", nullable = true, length = 255)
+    public String getPeriode() {
+        return periode;
     }
 
-    public void setDispoSec(String dispoSec) {
-        this.dispoSec = dispoSec;
+    public void setPeriode(String periode) {
+        this.periode = periode;
     }
 
     @Basic
@@ -144,16 +132,6 @@ public class Offre {
     }
 
     @Basic
-    @Column(name = "spec", nullable = true, length = 255)
-    public String getSpec() {
-        return spec;
-    }
-
-    public void setSpec(String spec) {
-        this.spec = spec;
-    }
-
-    @Basic
     @Column(name = "description", nullable = true, length = 4096)
     public String getDescription() {
         return description;
@@ -163,15 +141,6 @@ public class Offre {
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "carte_pro_filename", nullable = true, length = 255)
-    public String getCarteProFilename() {
-        return carteProFilename;
-    }
-
-    public void setCarteProFilename(String carteProFilename) {
-        this.carteProFilename = carteProFilename;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -189,13 +158,9 @@ public class Offre {
         if (logicielUtilise != null ? !logicielUtilise.equals(offre.logicielUtilise) : offre.logicielUtilise != null)
             return false;
         if (retrocession != null ? !retrocession.equals(offre.retrocession) : offre.retrocession != null) return false;
-        if (secretariat != null ? !secretariat.equals(offre.secretariat) : offre.secretariat != null) return false;
-        if (dispoSec != null ? !dispoSec.equals(offre.dispoSec) : offre.dispoSec != null) return false;
+        if (periode != null ? !periode.equals(offre.periode) : offre.periode != null) return false;
         if (typePatient != null ? !typePatient.equals(offre.typePatient) : offre.typePatient != null) return false;
-        if (spec != null ? !spec.equals(offre.spec) : offre.spec != null) return false;
         if (description != null ? !description.equals(offre.description) : offre.description != null) return false;
-        if (carteProFilename != null ? !carteProFilename.equals(offre.carteProFilename) : offre.carteProFilename != null)
-            return false;
 
         return true;
     }
@@ -209,12 +174,9 @@ public class Offre {
         result = 31 * result + (horaire != null ? horaire.hashCode() : 0);
         result = 31 * result + (logicielUtilise != null ? logicielUtilise.hashCode() : 0);
         result = 31 * result + (retrocession != null ? retrocession.hashCode() : 0);
-        result = 31 * result + (secretariat != null ? secretariat.hashCode() : 0);
-        result = 31 * result + (dispoSec != null ? dispoSec.hashCode() : 0);
         result = 31 * result + (typePatient != null ? typePatient.hashCode() : 0);
-        result = 31 * result + (spec != null ? spec.hashCode() : 0);
+        result = 31 * result + (periode != null ? periode.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (carteProFilename != null ? carteProFilename.hashCode() : 0);
         return result;
     }
 }

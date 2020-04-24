@@ -8,14 +8,16 @@ import javax.persistence.Id;
 @Entity
 public class Client {
     private int idClient;
-    private Short typeOffre;
     private String mail;
     private String numTel;
     private String adresse;
-    private String periode;
     private String zoneGeo;
     private Integer kmMax;
+    private Short secretariat;
+    private Short dispoSec;
+    private String specialite;
     private String mdp;
+    private String cartePro_filename;
 
     @Id
     @Column(name = "id_client", nullable = false)
@@ -28,13 +30,13 @@ public class Client {
     }
 
     @Basic
-    @Column(name = "type_offre", nullable = true)
-    public Short getTypeOffre() {
-        return typeOffre;
+    @Column(name = "secretariat", nullable = true)
+    public Short getSecretariat() {
+        return secretariat;
     }
 
-    public void setTypeOffre(Short typeOffre) {
-        this.typeOffre = typeOffre;
+    public void setSecretariat(Short secretariat) {
+        this.secretariat = secretariat;
     }
 
     @Basic
@@ -78,13 +80,33 @@ public class Client {
     }
 
     @Basic
-    @Column(name = "periode", nullable = true, length = 255)
-    public String getPeriode() {
-        return periode;
+    @Column(name = "dispoSec", nullable = true, length = 255)
+    public Short getDispoSec() {
+        return dispoSec;
     }
 
-    public void setPeriode(String periode) {
-        this.periode = periode;
+    public void setDispoSec(Short dispoSec) {
+        this.dispoSec = dispoSec;
+    }
+
+    @Basic
+    @Column(name = "specialite", nullable = true, length = 255)
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
+
+    @Basic
+    @Column(name = "cartePro_filename", nullable = true, length = 255)
+    public String getCartePro_filename() {
+        return cartePro_filename;
+    }
+
+    public void setCartePro_filename(String cartePro_filename) {
+        this.cartePro_filename = cartePro_filename;
     }
 
     @Basic
@@ -115,11 +137,13 @@ public class Client {
         Client client = (Client) o;
 
         if (idClient != client.idClient) return false;
-        if (typeOffre != null ? !typeOffre.equals(client.typeOffre) : client.typeOffre != null) return false;
+        if (secretariat != null ? !secretariat.equals(client.secretariat) : client.secretariat != null) return false;
         if (mail != null ? !mail.equals(client.mail) : client.mail != null) return false;
         if (numTel != null ? !numTel.equals(client.numTel) : client.numTel != null) return false;
         if (adresse != null ? !adresse.equals(client.adresse) : client.adresse != null) return false;
-        if (periode != null ? !periode.equals(client.periode) : client.periode != null) return false;
+        if (dispoSec != null ? !dispoSec.equals(client.dispoSec) : client.dispoSec != null) return false;
+        if (specialite != null ? !specialite.equals(client.specialite) : client.specialite != null) return false;
+        if (cartePro_filename != null ? !cartePro_filename.equals(client.cartePro_filename) : client.cartePro_filename != null) return false;
         if (zoneGeo != null ? !zoneGeo.equals(client.zoneGeo) : client.zoneGeo != null) return false;
         if (kmMax != null ? !kmMax.equals(client.kmMax) : client.kmMax != null) return false;
         if (mdp != null ? !mdp.equals(client.mdp) : client.mdp != null) return false;
@@ -130,13 +154,15 @@ public class Client {
     @Override
     public int hashCode() {
         int result = idClient;
-        result = 31 * result + (typeOffre != null ? typeOffre.hashCode() : 0);
+        result = 31 * result + (secretariat != null ? secretariat.hashCode() : 0);
         result = 31 * result + (mail != null ? mail.hashCode() : 0);
         result = 31 * result + (numTel != null ? numTel.hashCode() : 0);
         result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
-        result = 31 * result + (periode != null ? periode.hashCode() : 0);
+        result = 31 * result + (dispoSec != null ? dispoSec.hashCode() : 0);
         result = 31 * result + (zoneGeo != null ? zoneGeo.hashCode() : 0);
         result = 31 * result + (kmMax != null ? kmMax.hashCode() : 0);
+        result = 31 * result + (specialite != null ? specialite.hashCode() : 0);
+        result = 31 * result + (cartePro_filename != null ? cartePro_filename.hashCode() : 0);
         return result;
     }
 }

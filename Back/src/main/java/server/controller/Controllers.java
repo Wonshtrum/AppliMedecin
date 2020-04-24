@@ -92,14 +92,16 @@ public class Controllers {
                 Client c = myBddService.getClientById(paire.getFirst());
                 JSONObject newData = new JSONObject();
                 newData.put("idClient", c.getIdClient());
-                newData.put("typeOffre", c.getTypeOffre());
+                newData.put("secretariat", c.getSecretariat());
+                newData.put("dispoSec", c.getDispoSec());
+                newData.put("specialite", c.getSpecialite());
                 newData.put("mail", c.getMail());
                 newData.put("mdp", c.getMdp());
                 newData.put("kmMax", c.getKmMax());
                 newData.put("numTel", c.getNumTel());
                 newData.put("zoneGeo", c.getZoneGeo());
                 newData.put("adresse", c.getAdresse());
-                newData.put("periode", c.getPeriode());
+                newData.put("cartePro_filename", c.getCartePro_filename());
                 return newData.toJSONString();
             }
             case "offre":
