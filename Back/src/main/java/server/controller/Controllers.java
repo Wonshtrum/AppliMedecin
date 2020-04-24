@@ -84,7 +84,7 @@ public class Controllers {
                 newData.put("spec", r.getSpec());
                 newData.put("cvFilename", r.getCvFilename());
                 newData.put("description", r.getDescription());
-                newData.put("carteProFilename", r.getCarteProFilename());
+                newData.put("carteProFilename", r.getCartePro_filename());
                 newData.put("mdp", r.getMdp());
                 return newData.toJSONString();
             }
