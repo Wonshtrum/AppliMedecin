@@ -48,7 +48,12 @@ class SimpleRequest(private val content: JSONObject = JSONObject(),
 
     fun toJSON(): JSONObject {
         return if (success) {
-            JSONObject(result)
+            try {
+                JSONObject(result)
+            } catch (exception: Exception) {
+                val res = JSONObject()
+                res.put("resultat", result)
+            }
         } else {
             JSONObject()
         }

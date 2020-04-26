@@ -6,11 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
-import io.github.rybalkinsd.kohttp.dsl.httpGet
 import kotlinx.android.synthetic.main.activity_annonces.*
-import okhttp3.Response
-import org.json.JSONObject
-import java.net.URL
 
 class AnnoncesActivity : AppCompatActivity() {
     var box = 0
@@ -59,9 +55,16 @@ class AnnoncesActivity : AppCompatActivity() {
         }
 
         buttonProfil.setOnClickListener {
-            startActivity(Intent(this@AnnoncesActivity,Profil::class.java))
+            if (TicketManager.ticket.type == TypeTicket.CLIENT) {
+                startActivity(Intent(this@AnnoncesActivity, ProfilClient::class.java))
+            } else if (TicketManager.ticket.type == TypeTicket.REMPLACANT) {
+                startActivity(Intent(this@AnnoncesActivity, ProfilRemplacant::class.java))
+            } else {
+                startActivity(Intent(this@AnnoncesActivity,MainActivity::class.java))
+            }
         }
         buttonAnnoncesRetour.setOnClickListener {
+            TicketManager.disconnect()
             startActivity(Intent(this@AnnoncesActivity,MainActivity::class.java))
         }
         buttonCreate.setOnClickListener {

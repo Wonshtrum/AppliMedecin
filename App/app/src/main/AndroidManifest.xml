@@ -16,7 +16,8 @@
         tools:targetApi="n"
         android:fullBackupContent="true"
         android:name="androidx.multidex.MultiDexApplication">
-        <activity android:name=".Profil" />
+        <activity android:name=".ProfilClient" />
+        <activity android:name=".ProfilRemplacant" />
         <activity android:name=".AnnoncesActivity" />
         <activity android:name=".FormulaireRemplacantActivityA" />
         <activity android:name=".FormulaireRemplacantActivityB" />
