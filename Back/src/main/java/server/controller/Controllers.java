@@ -2,9 +2,11 @@ package server.controller;
 
 
 import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.data.util.Pair;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,8 +23,9 @@ import server.json.SimpleResponse;
 import server.json.TestJson;
 import org.json.simple.*;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,6 +67,7 @@ public class Controllers {
         JSONObject jay = new JSONObject();
         jay.put("id",infos.getFirst());
         jay.put("type",infos.getSecond());
+        jay.put("security",1);
         return jay.toJSONString();
     }
 
@@ -137,6 +141,13 @@ public class Controllers {
         else {
             return "erreur";
         }
+    }
+
+    @GetMapping(value = "/getPdf", produces = MediaType.APPLICATION_PDF_VALUE)
+    public @ResponseBody byte[] getPDF(@RequestParam(name="filename", required = true) String name) throws IOException {
+        String chemin = "resources/" + name;
+        InputStream in = getClass().getResourceAsStream(chemin);
+        return IOUtils.toByteArray(in);
     }
 
     @GetMapping("/requeteOffres")
