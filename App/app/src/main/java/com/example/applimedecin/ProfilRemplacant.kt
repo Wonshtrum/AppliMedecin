@@ -27,11 +27,30 @@ class ProfilRemplacant : AppCompatActivity() {
             profilRempTel.setText(res.getStringD("numTel"))
             profilRempAdresse.setText(res.getStringD("adresse"))
             profilRempSpec.setText(res.getStringD("spec"))
-            profilRempKM.setProgress(res.getInt("kmMax"), true)
-            editTextDescRemp2.setText(res.getStringD("description"))
+            profilRempKM.setText(res.getInt("kmMax").toString())
+            profilRempDescription.setText(res.getStringD("description"))
         }
 
-        imageButton2.setOnClickListener {
+        profilRempModif.setOnClickListener {
+            val res = DoAsync {
+                RequestCatalog.saveDataRemplacant(
+                    TicketManager.ticket.id.toString(),
+                    "",
+                    "",
+                    profilRempDescription.text.toString(),
+                    profilRempKM.text.toString(),
+                    profilRempAdresse.text.toString(),
+                    profilRempMail.text.toString(),
+                    profilRempTel.text.toString(),
+                    profilRempSpec.text.toString(),
+                    profilRempMDP.text.toString(),
+                    ""
+                )
+            }.waitUntil()
+            println(res)
+        }
+
+        profilRetour.setOnClickListener {
             startActivity(Intent(this@ProfilRemplacant,AnnoncesActivity::class.java))
         }
     }

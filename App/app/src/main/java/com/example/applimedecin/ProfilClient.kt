@@ -26,7 +26,7 @@ class ProfilClient : AppCompatActivity() {
             profilClientTel.setText(res.getStringD("numTel"))
             profilClientAdresse.setText(res.getStringD("adresse"))
             profilClientSpec.setText(res.getStringD("specialite"))
-            profilClientKM.setProgress(res.getInt("kmMax"), true)
+            profilClientKM.setText(res.getInt("kmMax").toString())
             profilClientSecretariat.isChecked = res.getInt("secretariat") == 1
             profilClientDispoSec.setSelection(res.getInt("dispoSec"))
             if (!profilClientSecretariat.isChecked) {
@@ -35,7 +35,32 @@ class ProfilClient : AppCompatActivity() {
             }
         }
 
-        imageButton2.setOnClickListener {
+        profilClientSecretariat.setOnClickListener {
+            profilClientHint.isEnabled = profilClientSecretariat.isChecked
+            profilClientDispoSec.isEnabled = profilClientSecretariat.isChecked
+        }
+
+        profilClientModif.setOnClickListener {
+            val res = DoAsync {
+                RequestCatalog.saveDataClient(
+                    TicketManager.ticket.id.toString(),
+                    profilClientTel.text.toString(),
+                    profilClientAdresse.text.toString(),
+                    profilClientKM.text.toString(),
+                    profilClientMail.text.toString(),
+                    profilClientSpec.text.toString(),
+                    if (profilClientSecretariat.isChecked) "1" else "0",
+                    profilClientDispoSec.selectedItemId.toString(),
+                    if (profilClientAlone.isChecked) "1" else "0",
+                    profilClientMDP.text.toString(),
+                    "",
+                    ""
+                )
+            }.waitUntil()
+            println(res)
+        }
+
+        profilRetour.setOnClickListener {
             startActivity(Intent(this@ProfilClient,AnnoncesActivity::class.java))
         }
     }

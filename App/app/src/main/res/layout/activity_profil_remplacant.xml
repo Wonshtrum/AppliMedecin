@@ -7,7 +7,7 @@
     tools:context=".ProfilClient">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/profilRetour"
         android:layout_width="51dp"
         android:layout_height="49dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/profilRempModif"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:text="Modifier"
@@ -93,13 +93,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
                 android:text="Rayonnement"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/profilRempKM"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextDescRemp2"
+                android:id="@+id/profilRempDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
@@ -181,12 +182,13 @@
                 app:layout_constraintStart_toEndOf="@+id/textView13"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <SeekBar
+            <EditText
                 android:id="@+id/profilRempKM"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/profilRempSpec"
                 app:layout_constraintTop_toBottomOf="@+id/profilRempSpec" />

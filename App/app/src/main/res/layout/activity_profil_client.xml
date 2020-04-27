@@ -7,7 +7,7 @@
     tools:context=".ProfilClient">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/profilRetour"
         android:layout_width="51dp"
         android:layout_height="49dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/profilClientModif"
         android:layout_width="88dp"
         android:layout_height="48dp"
         android:text="Modifier"
@@ -123,6 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
                 android:text="Rayonnement"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/profilClientKM"
@@ -207,12 +208,13 @@
                 app:layout_constraintBottom_toBottomOf="@+id/profilClientAlone"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <SeekBar
+            <EditText
                 android:id="@+id/profilClientKM"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/profilClientSpec"
                 app:layout_constraintTop_toBottomOf="@+id/profilClientSpec" />
