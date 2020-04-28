@@ -54,8 +54,7 @@ public class Controllers {
     @GetMapping("/saveData")
     public String testJSon(@RequestParam(name="data", required=true) String json) throws ParseException {
         JSONObject jj = lireJson(json);
-        myBddService.saveData(jj);
-        return "bonjour";
+        return myBddService.saveData(jj).toString();
     }
 
     @GetMapping("/connexion")
