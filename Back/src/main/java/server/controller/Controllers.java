@@ -105,6 +105,7 @@ public class Controllers {
                 newData.put("zoneGeo", c.getZoneGeo());
                 newData.put("adresse", c.getAdresse());
                 newData.put("cartePro_filename", c.getCartePro_filename());
+                newData.put("activite",c.getActivite());
                 return newData.toJSONString();
             }
             case "offre":
