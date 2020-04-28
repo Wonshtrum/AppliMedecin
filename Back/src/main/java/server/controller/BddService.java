@@ -110,7 +110,7 @@ public class BddService {
         return obj;
     }
 
-    void saveData(JSONObject obj) {
+    Integer saveData(JSONObject obj) {
         String type = (String) obj.get("type");
         switch (type){
             case "client":
@@ -118,6 +118,9 @@ public class BddService {
                 if (myClient.existsByIdClient(Integer.parseInt((String)obj.get("idClient")))) {
                     c = myClient.findByIdClient(Integer.parseInt((String)obj.get("idClient")));
                 }
+                else if (myClient.existsByMail((String) obj.get("mail"))){
+                      return 1;
+                    }
                 c.setNumTel((String) obj.get("numTel"));
                 c.setAdresse((String) obj.get("adresse"));
                 c.setKmMax( Integer.parseInt((String)obj.get("kmMax")));
@@ -129,9 +132,8 @@ public class BddService {
                 c.setDispoSec(Short.parseShort((String) obj.get("dispoSec")));
                 c.setZoneGeo((String) obj.get("zoneGeo"));
                 c.setCartePro_filename((String) obj.get("cartePro_filename"));
-
                 myClient.save(c);
-                break;
+                return 0;
             case "offre":
                 Offre o = new Offre();
                 if (myOffre.existsByIdOffre(Integer.parseInt((String)obj.get("idOffre")))){
@@ -147,7 +149,7 @@ public class BddService {
                 o.setTypePatient((String) obj.get("typePatient"));
                 o.setVisiteDomicile(Integer.parseInt((String) obj.get("visiteDomicile")));
                 myOffre.save(o);
-                break;
+                return 0;
             case "postulat":
                 Postulat p = new Postulat();
                 if (myPostulat.existsByIdPostulat(Integer.parseInt((String)obj.get("idPostulat")))){
@@ -156,7 +158,7 @@ public class BddService {
                 p.setIdOffre(Integer.parseInt((String) obj.get("idOffre")));
                 p.setIdRemplacant(Integer.parseInt((String) obj.get("idRemplacant")));
                 myPostulat.save(p);
-                break;
+                return 0;
             case "remplacant":
                 Remplacant r = new Remplacant();
                 if (myRemplacant.existsByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")))){
@@ -173,10 +175,10 @@ public class BddService {
                 r.setSpec((String) obj.get("spec"));
                 r.setZoneGeo((String) obj.get("zoneGeo"));
                 myRemplacant.save(r);
-                break;
+                return 0;
             default :
                 System.out.println("defaut");
-                break;
+                return 2;
         }
     }
 }

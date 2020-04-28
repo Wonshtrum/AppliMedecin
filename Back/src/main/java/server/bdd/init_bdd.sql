@@ -46,7 +46,7 @@ CREATE TABLE offre
 	type_patient VARCHAR(255), /*#Type de patientèle (dominante : personnes âgées, enfants, Non communiquée)*/
 	description VARCHAR(4096), /*#Zonelibre :descriptiondesconditionsdetravail ;avantagescomplémentaires(parexemple:10C assurés ; condition de travail ; logement ; etc.)*/
 	periode VARCHAR(255),
-	archivage INT,
+	archivage INT DEFAULT 0,
     CONSTRAINT FK_id_client FOREIGN KEY (id_client) REFERENCES client(id_client)
 );
 
