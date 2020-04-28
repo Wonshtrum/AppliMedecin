@@ -7,13 +7,13 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_formulaire_remplacant_a.*
+import kotlinx.android.synthetic.main.activity_formulaire_remplacant_general.*
 
 class FormulaireRemplacantActivityA : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formulaire_remplacant_a)
+        setContentView(R.layout.activity_formulaire_remplacant_general)
 
         val editChamps1=findViewById<EditText>(R.id.editTextMailRemp)
         val editChamps2=findViewById<EditText>(R.id.editTextNumTelRemp)

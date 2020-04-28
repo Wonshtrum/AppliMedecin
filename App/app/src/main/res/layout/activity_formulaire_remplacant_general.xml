@@ -59,8 +59,8 @@
 
             <TextView
                 android:id="@+id/textViewMailRemp"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
                 android:text="Adresse-mail"
@@ -84,8 +84,8 @@
 
             <TextView
                 android:id="@+id/textNumTelRemp"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
                 android:text="N° téléphone"
@@ -95,8 +95,8 @@
 
             <TextView
                 android:id="@+id/textNumTel3"
-                android:layout_width="113dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
                 android:text="Mot de passe"
@@ -132,8 +132,8 @@
 
             <TextView
                 android:id="@+id/textAdresseRemp"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
                 android:text="Adresse"

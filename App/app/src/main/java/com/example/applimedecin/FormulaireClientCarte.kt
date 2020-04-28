@@ -3,7 +3,6 @@ package com.example.applimedecin
 import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_formulaire_autre_h.*
 import kotlinx.android.synthetic.main.activity_formulaire_client_carte.*
 
 class FormulaireClientCarte: AppCompatActivity() {

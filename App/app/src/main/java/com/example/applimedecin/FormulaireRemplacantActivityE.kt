@@ -3,13 +3,13 @@ package com.example.applimedecin
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_formulaire_remplacant_e.*
+import kotlinx.android.synthetic.main.activity_formulaire_remplacant_carte.*
 
 class FormulaireRemplacantActivityE : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_formulaire_remplacant_e)
+        setContentView(R.layout.activity_formulaire_remplacant_carte)
 
         boutonSuivantERemp.setOnClickListener {
             val data = intent.extras

@@ -7,25 +7,28 @@ import android.os.Bundle
 import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_annonces.*
+import org.json.JSONObject
+
 
 class AnnoncesActivity : AppCompatActivity() {
     var box = 0
-    var bdd = mutableListOf<String>()
+    var bdd = mutableListOf<JSONObject>()
 
     fun createBox() {
         box++
-        val jsonStr = if (bdd.isEmpty()) "Annonce ${box}\nDescription de l'annonce ${box}" else bdd.removeAt(0)
+        val annonce = bdd.removeAt(0)
+        val descripton = annonce.getStringD("description", "").split("\n", ignoreCase = true, limit = 0)
         val text_view: TextView = TextView(this)
         val params: LayoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         params.setMargins(10, 10, 10, 10)
         text_view.setBackgroundColor(Color.LTGRAY)
         text_view.layoutParams = params
-        text_view.text = jsonStr
-        text_view.setPadding(50, 10, 10, 100)
+        text_view.text = descripton[0]
+        text_view.setPadding(50, 25, 10, 30)
         text_view.setOnClickListener{
             val intent = Intent(this@AnnoncesActivity,AnnonceView::class.java)
-            intent.putExtra("sujet", "Generic subject")
-            intent.putExtra("description", jsonStr)
+            intent.putExtra("sujet", descripton[0])
+            intent.putExtra("description", descripton[1])
             startActivity(intent)
         }
         annonceContainer.addView(text_view)
@@ -34,9 +37,15 @@ class AnnoncesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
+
+        buttonCreate.isEnabled = TicketManager.ticket.type == TypeTicket.CLIENT
+
         DoAsync {
-            val res = RequestCatalog.getAllOffers().toString()
-            bdd.addAll(res.split(","))
+            val res = RequestCatalog.getAllOffers()
+            val list = res.getJSONArray("offres")
+            for (i in 0 until list.length()) {
+                bdd.add(JSONObject(list.getString(i)))
+            }
             println(res)
         }.waitUntil()
 
@@ -60,15 +69,15 @@ class AnnoncesActivity : AppCompatActivity() {
             } else if (TicketManager.ticket.type == TypeTicket.REMPLACANT) {
                 startActivity(Intent(this@AnnoncesActivity, ProfilRemplacant::class.java))
             } else {
-                startActivity(Intent(this@AnnoncesActivity,MainActivity::class.java))
+                startActivity(Intent(this@AnnoncesActivity, MainActivity::class.java))
             }
         }
         buttonAnnoncesRetour.setOnClickListener {
             TicketManager.disconnect()
-            startActivity(Intent(this@AnnoncesActivity,MainActivity::class.java))
+            startActivity(Intent(this@AnnoncesActivity, MainActivity::class.java))
         }
         buttonCreate.setOnClickListener {
-            startActivity(Intent(this@AnnoncesActivity,AnnonceActivity::class.java))
+            startActivity(Intent(this@AnnoncesActivity, FormulaireOffreGeneral::class.java))
         }
     }
 }
