@@ -45,7 +45,12 @@ class FormulaireClientActivite: AppCompatActivity() {
         }
 
         boutonSuivantF.setOnClickListener {
-            startActivity(Intent(this@FormulaireClientActivite,FormulaireClientCarte::class.java))
+            intent.setClass(this@FormulaireClientActivite, FormulaireClientCarte::class.java)
+            intent.putExtra("specialite", editChamps1.getText().toString())
+            intent.putExtra("activite", if (switch1.isChecked) "1" else "0")
+            intent.putExtra("secretariat", if (switch2.isChecked) "1" else "0")
+            intent.putExtra("dispoSec", spinnerSec.selectedItemId.toString())
+            startActivity(intent)
         }
 
     }

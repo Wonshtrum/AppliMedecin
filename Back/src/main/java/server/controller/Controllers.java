@@ -67,6 +67,7 @@ public class Controllers {
         JSONObject jay = new JSONObject();
         jay.put("id",infos.getFirst());
         jay.put("type",infos.getSecond());
+        jay.put("security",1);
         return jay.toJSONString();
     }
 

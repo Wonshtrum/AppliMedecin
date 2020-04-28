@@ -57,7 +57,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/profilClientHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -94,8 +94,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mot de passe oublié ?"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintStart_toStartOf="@+id/profilClientHint"
+                app:layout_constraintTop_toBottomOf="@+id/profilClientHint" />
 
             <EditText
                 android:id="@+id/editTextMail"

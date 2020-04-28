@@ -65,7 +65,7 @@
                 android:layout_height="21dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="Distance max :"
+                android:text="Distance max"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextDistRemp"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -90,7 +90,7 @@
                 android:layout_height="21dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="Spécialité :"
+                android:text="Spécialité"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextSpecRemp"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Description :"
+                android:text="Description"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextSpecRemp" />
@@ -136,7 +136,7 @@
                 android:id="@+id/boutonSuivantBRemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:enabled="false"
                 android:text="Suivant"
                 app:layout_constraintEnd_toEndOf="parent"

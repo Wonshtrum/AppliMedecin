@@ -160,7 +160,7 @@ public class BddService {
             case "remplacant":
                 Remplacant r = new Remplacant();
                 if (myRemplacant.existsByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")))){
-                    myRemplacant.findByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")));
+                    r = myRemplacant.findByIdRemplacant(Integer.parseInt((String)obj.get("idRemplacant")));
                 }
                 r.setCartePro_filename((String) obj.get("cartePro_filename"));
                 r.setCvFilename((String) obj.get("cvFilename"));

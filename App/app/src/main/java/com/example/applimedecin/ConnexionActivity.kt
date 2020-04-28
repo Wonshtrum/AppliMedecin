@@ -14,7 +14,7 @@ class ConnexionActivity : AppCompatActivity() {
             val newTicket = DoAsync {
                 RequestCatalog.connect(editTextMail.text.toString(), editTextMotDePasse.text.toString())
             }.waitUntil()
-            if (TicketManager.connect(newTicket) || true) {
+            if (TicketManager.connect(newTicket)) {
                 startActivity(Intent(this@ConnexionActivity, AnnoncesActivity::class.java))
             }
         }

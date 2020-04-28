@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profil">
+    tools:context=".ProfilClient">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/profilRetour"
         android:layout_width="51dp"
         android:layout_height="49dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,11 +72,11 @@
                 android:layout_marginBottom="10dp"
                 android:text="Secretariat"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editText7"
+                app:layout_constraintBottom_toBottomOf="@+id/profilClientSpec"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/profilClientHint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -105,7 +105,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="Téléphone"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editText5"
+                app:layout_constraintBottom_toBottomOf="@+id/profilClientMDP"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -116,7 +116,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="E-mail"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editText4"
+                app:layout_constraintBottom_toBottomOf="@+id/profilClientMail"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -126,33 +126,33 @@
                 android:layout_marginStart="16dp"
                 android:text="Km max"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/seekBar"
+                app:layout_constraintBottom_toBottomOf="@+id/profilClientKM"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/profilClientMDP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editText4"
-                app:layout_constraintTop_toBottomOf="@+id/editText4" />
+                app:layout_constraintStart_toStartOf="@+id/profilClientMail"
+                app:layout_constraintTop_toBottomOf="@+id/profilClientMail" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/profilClientAdresse"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editText5"
-                app:layout_constraintTop_toBottomOf="@+id/editText5" />
+                app:layout_constraintStart_toStartOf="@+id/profilClientMDP"
+                app:layout_constraintTop_toBottomOf="@+id/profilClientMDP" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/profilClientAlone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -167,10 +167,10 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+                app:layout_constraintTop_toBottomOf="@+id/profilClientKM" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/profilClientMail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -193,18 +193,18 @@
                 android:layout_marginBottom="2dp"
                 android:text="Visite à domicile"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/checkBox2"
+                app:layout_constraintBottom_toBottomOf="@+id/profilClientAlone"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <SeekBar
-                android:id="@+id/seekBar"
+                android:id="@+id/profilClientKM"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editText6"
-                app:layout_constraintTop_toBottomOf="@+id/editText6" />
+                app:layout_constraintStart_toStartOf="@+id/profilClientAdresse"
+                app:layout_constraintTop_toBottomOf="@+id/profilClientAdresse" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -214,7 +214,7 @@
                 android:layout_marginBottom="10dp"
                 android:text="Adresse"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editText6"
+                app:layout_constraintBottom_toBottomOf="@+id/profilClientAdresse"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -237,11 +237,11 @@
                 android:ems="10"
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/seekBar"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+                app:layout_constraintStart_toStartOf="@+id/profilClientKM"
+                app:layout_constraintTop_toBottomOf="@+id/profilClientAlone" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/profilClientSpec"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -259,8 +259,8 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/editText7"
-                app:layout_constraintTop_toBottomOf="@+id/editText7" />
+                app:layout_constraintStart_toStartOf="@+id/profilClientSpec"
+                app:layout_constraintTop_toBottomOf="@+id/profilClientSpec" />
 
             <TextView
                 android:id="@+id/textView7"

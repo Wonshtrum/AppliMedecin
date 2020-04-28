@@ -13,9 +13,9 @@ CREATE TABLE client
 	zone_geo VARCHAR(255), /*#Zone géographique : Km max, géo-référencement*/
 	km_max INT,
     secretariat TINYINT,
-    dispoSec TINYINT,
+    dispo_sec TINYINT,
     specialite VARCHAR(255),
-    cartePro_filename VARCHAR(255),
+    carte_pro_filename VARCHAR(255),
     activite TINYINT
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE remplacant
 	spec VARCHAR(255), /*#Spécialité (outre la médecine générale ; par exemple : sport, sommeil, gynécologie, etc.)*/
 	description VARCHAR(4095), /*#Zone libre : description du profil*/
 	cv_filename VARCHAR(255), /* #Nom du fichier CV*/
-	cartePro_filename VARCHAR(255) /*#Nom du fichier carte professionnelle*/
+	carte_pro_filename VARCHAR(255) /*#Nom du fichier carte professionnelle*/
 );
 
 CREATE TABLE offre
