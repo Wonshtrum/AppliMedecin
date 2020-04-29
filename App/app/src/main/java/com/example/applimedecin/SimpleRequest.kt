@@ -8,7 +8,7 @@ import java.util.HashMap
 class SimpleRequest(private val content: JSONObject = JSONObject(),
                     private val ticket: JSONObject = JSONObject(),
                     private var result: String = "",
-                    private var sucess: Boolean = false) {
+                    private var success: Boolean = false) {
 
     fun put(key: String, value: String) {
         content.put(key, value)
@@ -35,6 +35,7 @@ class SimpleRequest(private val content: JSONObject = JSONObject(),
                     "ticket" to jsonTicket
                 }
             }.body()
+            success = true
             result = body?.string().orEmpty()
             println("           GET ($url): $result")
             return this
@@ -46,8 +47,13 @@ class SimpleRequest(private val content: JSONObject = JSONObject(),
     }
 
     fun toJSON(): JSONObject {
-        return if (sucess) {
-            JSONObject(result)
+        return if (success) {
+            try {
+                JSONObject(result)
+            } catch (exception: Exception) {
+                val res = JSONObject()
+                res.put("resultat", result)
+            }
         } else {
             JSONObject()
         }
@@ -121,7 +127,8 @@ object RequestCatalog {
     }
 
     fun saveDataClient(idClient:String, numTel:String, adresse:String, kmMax:String, mail:String,
-                       periode:String, typeOffre:String, zoneGeo:String): JSONObject {
+                       specialite:String, secretariat: String, dispoSec: String, activite: String,
+                       mdp: String, zoneGeo:String, carteProFilename: String): JSONObject {
         val data = JSONObject()
         data.put("type", "client")
         data.put("idClient", idClient)
@@ -129,32 +136,32 @@ object RequestCatalog {
         data.put("adresse", adresse)
         data.put("kmMax", kmMax)
         data.put("mail", mail)
-        data.put("periode", periode)
-        data.put("typeOffre", typeOffre)
+        data.put("specialite", specialite)
+        data.put("secretariat", secretariat)
+        data.put("dispoSec", dispoSec)
+        data.put("activite", activite)
+        data.put("mdp", mdp)
         data.put("zoneGeo", zoneGeo)
+        data.put("cartePro_filename", carteProFilename)
         return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
-    fun saveDataOffre(idOffre:String, idClient:String, activite:String, carteProFilename:String,
-                      description:String, dispoSec:String, horaire:String, logicielUtilise:String,
-                      retrocession:String, secretariat:String, spec:String, typeOffre:String,
-                      typePatient:String, visiteDomicile:String): JSONObject {
+    fun saveDataOffre(idOffre:String, idClient:String, periode: String, description:String,
+                      horaire:String, logicielUtilise:String, retrocession:String, typeOffre:String,
+                      typePatient:String, visiteDomicile:String, archivage: String = "0"): JSONObject {
         val data = JSONObject()
         data.put("type", "offre")
         data.put("idOffre", idOffre)
         data.put("idClient", idClient)
-        data.put("activite", activite)
-        data.put("carteProFilename", carteProFilename)
+        data.put("periode", periode)
         data.put("description", description)
-        data.put("dispoSec", dispoSec)
         data.put("horaire", horaire)
         data.put("logicielUtilise", logicielUtilise)
         data.put("retrocession", retrocession)
-        data.put("secretariat", secretariat)
-        data.put("spec", spec)
         data.put("typeOffre", typeOffre)
         data.put("typePatient", typePatient)
         data.put("visiteDomicile", visiteDomicile)
+        data.put("archivage", archivage)
         return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
@@ -168,20 +175,21 @@ object RequestCatalog {
     }
 
     fun saveDataRemplacant(idRemplacant:String, carteProFilename:String, cvFilename:String,
-                           description:String, dispo:String, kmMax:String, mail:String,
-                           numTel:String, spec:String, zoneGeo:String): JSONObject {
+                           description:String, kmMax:String, adresse: String, mail:String,
+                           numTel:String, spec:String, mdp: String, zoneGeo:String): JSONObject {
         val data = JSONObject()
         data.put("type", "remplacant")
         data.put("idRemplacant", idRemplacant)
         data.put("carteProFilename", carteProFilename)
         data.put("cvFilename", cvFilename)
         data.put("description", description)
-        data.put("dispo", dispo)
         data.put("kmMax", kmMax)
         data.put("mail", mail)
         data.put("numTel", numTel)
         data.put("spec", spec)
         data.put("zoneGeo", zoneGeo)
+        data.put("mdp", mdp)
+        data.put("adresse", adresse)
         return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 }

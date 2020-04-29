@@ -22,9 +22,7 @@
             android:id="@+id/annonceContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
+            android:orientation="vertical"/>
     </androidx.core.widget.NestedScrollView>
 
     <Button
@@ -33,9 +31,20 @@
         android:layout_height="wrap_content"
         android:background="#FF4444"
         android:text="Créer Annonce"
-        app:layout_constraintEnd_toStartOf="@+id/buttonProfil"
-        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintEnd_toStartOf="@+id/buttonView"
+        app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FF4444"
+        android:text="Mes annonces"
+        app:layout_constraintEnd_toStartOf="@+id/buttonProfil"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/buttonCreate"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -55,8 +64,8 @@
         android:background="#FF4444"
         android:text="Profil"
         app:layout_constraintEnd_toStartOf="@+id/buttonAnnoncesRetour"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toEndOf="@+id/buttonCreate"
+        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintStart_toEndOf="@+id/buttonView"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

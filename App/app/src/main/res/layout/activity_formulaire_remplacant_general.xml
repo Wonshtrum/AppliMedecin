@@ -59,11 +59,11 @@
 
             <TextView
                 android:id="@+id/textViewMailRemp"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="Adresse-mail:"
+                android:text="Adresse-mail"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextMailRemp"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -84,14 +84,38 @@
 
             <TextView
                 android:id="@+id/textNumTelRemp"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="N° téléphone:"
+                android:text="N° téléphone"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editTextNumTelRemp"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textNumTel3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Mot de passe"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextMDP2"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextMDP2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/editTextMailRemp"
+                app:layout_constraintTop_toBottomOf="@+id/editTextMailRemp" />
 
             <EditText
                 android:id="@+id/editTextNumTelRemp"
@@ -104,15 +128,15 @@
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/editTextMailRemp"
-                app:layout_constraintTop_toBottomOf="@+id/editTextMailRemp" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextMDP2" />
 
             <TextView
                 android:id="@+id/textAdresseRemp"
-                android:layout_width="109dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="10dp"
-                android:text="Adresse:"
+                android:text="Adresse"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/editText2Remp"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -134,7 +158,7 @@
                 android:id="@+id/boutonSuivantARemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:enabled="false"
                 android:text="Suivant"
                 app:layout_constraintEnd_toEndOf="parent"

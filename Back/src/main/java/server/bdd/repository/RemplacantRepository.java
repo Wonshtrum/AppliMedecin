@@ -13,4 +13,5 @@ public interface RemplacantRepository extends Repository<Remplacant,Integer> {
     boolean existsByMdpAndMail(String mdp, String mail);
     void deleteByIdRemplacant(int id);
     List<Remplacant> getDistinctByMdpIsNull();
+    boolean existsByMail(String mail);
 }

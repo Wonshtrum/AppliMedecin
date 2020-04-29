@@ -2,16 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout3"
+    android:id="@+id/constraintLayoutFormulaireAutreC"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".FormulaireOffreEnd">
 
     <TextView
-        android:id="@+id/textViewCRemp"
+        android:id="@+id/textViewEtapeC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Etape 3 sur 5"
+        android:text="Etape 3 sur 8"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -20,14 +21,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/progressBarCRemp"
+        android:id="@+id/progressBarEtapeC"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:progress="60"
+        android:progress="37"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCRemp" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEtapeC" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -35,24 +36,22 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarCRemp"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeC">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textTitreBRemp"
+                android:id="@+id/textTitreEtapeC"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
+                android:text="Séléctionner une date de fin de période"
                 android:textAlignment="center"
-                android:text="Séléctionner une date de début de période"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,23 +59,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <CalendarView
-                android:id="@+id/calendarViewDebutRemp"
+                android:id="@+id/calendarViewFIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:minDate="01/12/2019"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textTitreBRemp" />
+                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeC" />
 
             <Button
-                android:id="@+id/boutonSuivantCRemp"
+                android:id="@+id/offreSuivantC"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="Suivant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/calendarViewDebutRemp" />
+                app:layout_constraintTop_toBottomOf="@+id/calendarViewFIn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayoutFormulaireAutreE"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormulaireAutreEActivity">
+    tools:context=".FormulaireOffreSchedule">
 
 
     <TextView
@@ -68,17 +68,17 @@
                 android:text="Lundi"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/checkBoxMardi"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxLundi"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <CheckBox
-                android:id="@+id/checkBoxLundi"
+                android:id="@+id/checkBoxMardi"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="5dp"
                 android:text="ouvré?"
-                app:layout_constraintStart_toStartOf="@+id/checkBoxMardi"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxMardi" />
+                app:layout_constraintStart_toStartOf="@+id/checkBoxLundi"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxLundi" />
 
             <Spinner
                 android:id="@+id/spinnerHorairesLundi1"
@@ -86,8 +86,8 @@
                 android:layout_height="35dp"
                 android:entries="@array/listeHoraires"
                 app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesLundi2"
-                app:layout_constraintStart_toEndOf="@+id/checkBoxMardi"
-                app:layout_constraintTop_toTopOf="@+id/checkBoxMardi" />
+                app:layout_constraintStart_toEndOf="@+id/checkBoxLundi"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxLundi" />
 
             <Spinner
                 android:id="@+id/spinnerHorairesLundi2"
@@ -105,14 +105,14 @@
                 android:text="Mardi"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="@+id/checkBoxLundi"
+                app:layout_constraintBottom_toBottomOf="@+id/checkBoxMardi"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <CheckBox
-                android:id="@+id/checkBoxMardi"
+                android:id="@+id/checkBoxLundi"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
                 android:text="ouvré?"
                 app:layout_constraintStart_toEndOf="@+id/textViewDimanche"
@@ -124,8 +124,8 @@
                 android:layout_height="35dp"
                 android:entries="@array/listeHoraires"
                 app:layout_constraintEnd_toStartOf="@+id/spinnerHorairesMardi2"
-                app:layout_constraintStart_toEndOf="@+id/checkBoxLundi"
-                app:layout_constraintTop_toTopOf="@+id/checkBoxLundi" />
+                app:layout_constraintStart_toEndOf="@+id/checkBoxMardi"
+                app:layout_constraintTop_toTopOf="@+id/checkBoxMardi" />
 
             <Spinner
                 android:id="@+id/spinnerHorairesMardi2"
@@ -152,8 +152,8 @@
                 android:layout_height="35dp"
                 android:layout_marginTop="5dp"
                 android:text="ouvré?"
-                app:layout_constraintStart_toStartOf="@+id/checkBoxLundi"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxLundi" />
+                app:layout_constraintStart_toStartOf="@+id/checkBoxMardi"
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxMardi" />
 
             <Spinner
                 android:id="@+id/spinnerHorairesMercredi1"
@@ -321,7 +321,7 @@
                 app:layout_constraintTop_toTopOf="@+id/spinnerHorairesDimanche1" />
 
             <Button
-                android:id="@+id/boutonSuivantE"
+                android:id="@+id/boutonValider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"

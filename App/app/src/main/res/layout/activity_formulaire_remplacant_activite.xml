@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutFormulaireAutreD"
+    android:id="@+id/constraintLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textViewEtapeD"
+        android:id="@+id/textViewBRemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Etape 4 sur 8"
+        android:text="Etape 2 sur 5"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -20,14 +20,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/progressBarEtapeD"
+        android:id="@+id/progressBarBRemp"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="300sp"
         android:layout_height="33sp"
-        android:progress="50"
+        android:progress="40"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEtapeD" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBRemp" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -35,108 +35,113 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBarEtapeD">
+        app:layout_constraintTop_toBottomOf="@+id/progressBarBRemp"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textOffreEtapeA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Type d'offres:"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/spinner"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/textTitreBRemp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:entries="@array/listeOffres"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textOffreEtapeA"
-                app:layout_constraintTop_toBottomOf="@+id/textTitreEtapeA" />
-
-            <TextView
-                android:id="@+id/textTitreEtapeD"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
-                android:text="Situation Géographique attendue"
                 android:textAlignment="center"
+                android:text="Informations suplémentaires"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/textViewDistRemp"
+                android:layout_width="0dp"
+                android:layout_height="21dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="5dp"
-                android:text="Visite à domicile?"
+                android:layout_marginBottom="10dp"
+                android:text="Distance max"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/switchVisite"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextDistRemp"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <Switch
-                android:id="@+id/switchVisite"
-                android:layout_width="60dp"
-                android:layout_height="15dp"
+            <EditText
+                android:id="@+id/editTextDistRemp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="16dp"
-                android:textSize="16sp"
+                android:ems="10"
+                android:hint=" distance en kilomètre"
+                android:inputType="numberDecimal"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:layout_editor_absoluteY="163dp" />
+                app:layout_constraintStart_toEndOf="@+id/textViewDistRemp"
+                app:layout_constraintTop_toBottomOf="@+id/textTitreBRemp" />
 
+            <TextView
+                android:id="@+id/textViewSpecRemp"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Spécialité"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextSpecRemp"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <EditText
-                android:id="@+id/editTextRayonVisite"
+                android:id="@+id/editTextSpecRemp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                android:clickable="false"
                 android:ems="10"
-                android:enabled="false"
-                android:inputType="number"
-                android:text="0"
+                android:hint="sport, sommeil, ..."
+                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switchVisite" />
+                app:layout_constraintStart_toStartOf="@+id/editTextDistRemp"
+                app:layout_constraintTop_toBottomOf="@+id/editTextDistRemp" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/textViewDescRemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="10dp"
-                android:text="Rayon d'action:"
+                android:layout_marginTop="20dp"
+                android:text="Description"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextRayonVisite"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextSpecRemp" />
+
+            <EditText
+                android:id="@+id/editTextDescRemp"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="description..."
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescRemp" />
 
             <Button
-                android:id="@+id/boutonSuivantD"
+                android:id="@+id/boutonSuivantBRemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:enabled="false"
-
                 android:text="Suivant"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextRayonVisite" />
+                app:layout_constraintTop_toBottomOf="@+id/editTextDescRemp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

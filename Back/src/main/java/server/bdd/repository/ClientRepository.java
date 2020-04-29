@@ -15,5 +15,6 @@ public interface ClientRepository extends Repository<Client,Integer> {
         boolean existsByMdpAndMail(String mdp, String mail);
         void deleteByIdClient(int id);
         List<Client> getDistinctByMdpIsNull();
+        boolean existsByMail(String mail);
 
 }

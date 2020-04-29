@@ -1,20 +1,17 @@
 package com.example.applimedecin
 
 import android.os.Bundle
-import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_formulaire_autre_f.*
 
 class FormulaireClientActivite: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_formulaire_client_activite)
         val editChamps1 = findViewById<EditText>(R.id.editTextDomaine);
-        val boutonValider = findViewById<Button>(R.id.boutonSuivantF);
+        val boutonValider = findViewById<Button>(R.id.boutonValider);
         val switch1 = findViewById<Switch>(R.id.switchAssociation2);
         val switch2 = findViewById<Switch>(R.id.switchSecrétariat);
         val textSec = findViewById<TextView>(R.id.textSecrétariat);
@@ -44,8 +41,13 @@ class FormulaireClientActivite: AppCompatActivity() {
             }
         }
 
-        boutonSuivantF.setOnClickListener {
-            startActivity(Intent(this@FormulaireClientActivite,FormulaireClientCarte::class.java))
+        boutonValider.setOnClickListener {
+            intent.setClass(this@FormulaireClientActivite, FormulaireClientCarte::class.java)
+            intent.putExtra("specialite", editChamps1.getText().toString())
+            intent.putExtra("activite", if (switch1.isChecked) "1" else "0")
+            intent.putExtra("secretariat", if (switch2.isChecked) "1" else "0")
+            intent.putExtra("dispoSec", spinnerSec.selectedItemId.toString())
+            startActivity(intent)
         }
 
     }

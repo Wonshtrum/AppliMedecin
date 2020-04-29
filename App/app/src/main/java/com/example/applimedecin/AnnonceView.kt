@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_connexion.*
-import kotlinx.android.synthetic.main.activity_profil.*
+import kotlinx.android.synthetic.main.activity_profil_client.*
 import kotlinx.android.synthetic.main.annonce_vue.*
 
 class AnnonceView : AppCompatActivity(){
