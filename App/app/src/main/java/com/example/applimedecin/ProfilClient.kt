@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_profil_client.*
 

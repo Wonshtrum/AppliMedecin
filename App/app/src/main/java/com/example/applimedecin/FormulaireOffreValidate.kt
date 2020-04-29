@@ -47,7 +47,7 @@ class FormulaireOffreValidate : AppCompatActivity(){
                     RequestCatalog.saveDataOffre(
                         "-1",
                         TicketManager.ticket.id.toString(),
-                        "["+data.getString("date1","0")+","+data.getString("date1","0")+"]",
+                        "["+data.getString("date1","0")+","+data.getString("date2","0")+"]",
                         data.getString("description",""),
                         data.getString("horaire",""),
                         data.getString("logiciel",""),

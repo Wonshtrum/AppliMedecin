@@ -27,6 +27,7 @@ class FormulaireOffreSchedule: AppCompatActivity() {
                     first = false
                 }
             }
+            res += "}"
             intent.setClass(this@FormulaireOffreSchedule, FormulaireOffreValidate::class.java)
             intent.putExtra("horaire", res)
             startActivity(intent)
