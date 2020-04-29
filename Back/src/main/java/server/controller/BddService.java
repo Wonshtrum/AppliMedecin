@@ -148,6 +148,7 @@ public class BddService {
                 o.setTypeOffre(Short.parseShort((String) obj.get("typeOffre")));
                 o.setTypePatient((String) obj.get("typePatient"));
                 o.setVisiteDomicile(Integer.parseInt((String) obj.get("visiteDomicile")));
+                o.setArchivage(Integer.parseInt((String) obj.get("archivage")));
                 myOffre.save(o);
                 return 0;
             case "postulat":
