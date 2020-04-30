@@ -31,7 +31,8 @@ CREATE TABLE remplacant
 	spec VARCHAR(255), /*#Spécialité (outre la médecine générale ; par exemple : sport, sommeil, gynécologie, etc.)*/
 	description VARCHAR(4095), /*#Zone libre : description du profil*/
 	cv_filename VARCHAR(255), /* #Nom du fichier CV*/
-	carte_pro_filename VARCHAR(255) /*#Nom du fichier carte professionnelle*/
+	carte_pro_filename VARCHAR(255), /*#Nom du fichier carte professionnelle*/
+	adresse VARCHAR(255)
 );
 
 CREATE TABLE offre

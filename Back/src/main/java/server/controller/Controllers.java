@@ -89,6 +89,7 @@ public class Controllers {
                 newData.put("description", r.getDescription());
                 newData.put("carteProFilename", r.getCartePro_filename());
                 newData.put("mdp", r.getMdp());
+                newData.put("adresse",r.getAdresse());
                 return newData.toJSONString();
             }
             case "client": {

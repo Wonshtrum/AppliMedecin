@@ -175,6 +175,7 @@ public class BddService {
                 r.setNumTel((String) obj.get("numTel"));
                 r.setSpec((String) obj.get("spec"));
                 r.setZoneGeo((String) obj.get("zoneGeo"));
+                r.setAdresse((String) obj.get("adresse"));
                 myRemplacant.save(r);
                 return 0;
             default :

@@ -18,6 +18,7 @@ public class Remplacant {
     private String cvFilename;
     private String cartePro_filename;
     private String mdp;
+    private String adresse;
 
     @Id
     @Column(name = "id_remplacant", nullable = false)
@@ -47,6 +48,16 @@ public class Remplacant {
 
     public void setMdp(String mdp) {
         this.mdp = mdp;
+    }
+
+    @Basic
+    @Column(name = "adresse", nullable = true, length = 255)
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     @Basic
@@ -148,6 +159,7 @@ public class Remplacant {
         if (cartePro_filename != null ? !cartePro_filename.equals(that.cartePro_filename) : that.cartePro_filename != null)
             return false;
         if (mdp != null ? !mdp.equals(that.mdp) : that.mdp != null) return false;
+        if (adresse != null ? !adresse.equals(that.adresse) : that.adresse != null) return false;
 
         return true;
     }
@@ -164,6 +176,7 @@ public class Remplacant {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (cvFilename != null ? cvFilename.hashCode() : 0);
         result = 31 * result + (cartePro_filename != null ? cartePro_filename.hashCode() : 0);
+        result = 31 * result + (adresse != null ? adresse.hashCode() : 0);
         return result;
     }
 }
