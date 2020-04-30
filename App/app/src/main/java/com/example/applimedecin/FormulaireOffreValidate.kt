@@ -43,26 +43,20 @@ class FormulaireOffreValidate : AppCompatActivity(){
 
             val data = intent.extras
             if (data != null) {
-                for (i in 0 .. 50) {
-                    DoAsync {
-                        RequestCatalog.saveDataOffre(
-                            "-1",
-                            TicketManager.ticket.id.toString(),
-                            "[\"" + data.getString("date1", "0") + "\",\"" + data.getString(
-                                "date2",
-                                "0"
-                            ) + "\"]",
-                            editChamps1.text.toString()+(i+7)+'\n'+editChamps2.text.toString(),
-                            data.getString("horaire", ""),
-                            data.getString("logiciel", ""),
-                            data.getString("remuneration", ""),
-                            data.getString("typeOffre", ""),
-                            data.getString("typePatient", ""),
-                            data.getString("visite", "")
-                        )
-                    }.waitUntil()
-                    println(i)
-                }
+                DoAsync {
+                    RequestCatalog.saveDataOffre(
+                        "-1",
+                        TicketManager.ticket.id.toString(),
+                        "[\""+data.getString("date1","0")+"\",\""+data.getString("date2","0")+"\"]",
+                        data.getString("description",""),
+                        data.getString("horaire",""),
+                        data.getString("logiciel",""),
+                        data.getString("remuneration",""),
+                        data.getString("typeOffre",""),
+                        data.getString("typePatient",""),
+                        data.getString("visite","")
+                    )
+                }.waitUntil()
             }
             startActivity(intent)
         }
