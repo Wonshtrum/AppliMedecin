@@ -31,9 +31,8 @@ class AnnoncesActivity : AppCompatActivity() {
         val remuneration = annonce.getStringD("retrocession")
         val typePatient = annonce.getInt("typePatient")
         val periode = JSONArray(annonce.getStringD("periode"))
-        val sdf = SimpleDateFormat("dd/MM/yyyy")
-        val start = sdf.format(Date(periode.getLong(0)))
-        val end = sdf.format(Date(periode.getLong(1)))
+        val start = periode.getString(0)
+        val end = periode.getString(1)
         return "Offre : "+ arrayOf("Remplacement", "Succession", "Collaboration", "Installation")[typeOffre] +
                 "\nPeriode : du $start au $end" +
                 "\nPatientèle : "+ arrayOf("Non renseigné", "Personnes agées", "Enfants")[typePatient] +
@@ -49,12 +48,12 @@ class AnnoncesActivity : AppCompatActivity() {
 
 
         val paramsBase: LayoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-        paramsBase.setMargins(20, 20, 20, 0)
+        paramsBase.setMargins(10, 10, 10, 0)
         val params: LayoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         params.setMargins(10, 10, 10, 10)
 
         val card = CardView(this)
-        card.setBackgroundColor(Color.LTGRAY)
+        card.setBackgroundColor(Color.WHITE)
         card.layoutParams = paramsBase
         val layout = LinearLayout(this)
         layout.orientation = LinearLayout.VERTICAL
@@ -76,6 +75,7 @@ class AnnoncesActivity : AppCompatActivity() {
             intent.putExtra("description", descripton[1])
             intent.putExtra("complement", createAnnonceComplement(annonce))
             intent.putExtra("auteur", annonce.getLong("idClient").toString())
+            intent.putExtra("idOffre", annonce.getLong("idOffre").toString())
             startActivity(intent)
         }
 
@@ -86,7 +86,9 @@ class AnnoncesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
 
-        buttonCreate.isEnabled = TicketManager.ticket.type == TypeTicket.CLIENT
+        if (TicketManager.ticket.type != TypeTicket.CLIENT) {
+            buttonCreate.isEnabled = false
+        }
 
         DoAsync {
             val res = RequestCatalog.getAllOffers()

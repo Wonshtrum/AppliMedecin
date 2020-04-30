@@ -27,6 +27,7 @@ class ProfilClient : AppCompatActivity() {
             profilClientTel.setText(res.getStringD("numTel"))
             profilClientAdresse.setText(res.getStringD("adresse"))
             profilClientSpec.setText(res.getStringD("specialite"))
+            profilClientAlone.isChecked = res.getInt("activite") == 1
             profilClientKM.setText(res.getInt("kmMax").toString())
             profilClientSecretariat.isChecked = res.getInt("secretariat") == 1
             profilClientDispoSec.setSelection(res.getInt("dispoSec"))
