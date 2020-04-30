@@ -12,11 +12,6 @@ import androidx.cardview.widget.CardView
 import kotlinx.android.synthetic.main.activity_annonces.*
 import org.json.JSONArray
 import org.json.JSONObject
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class AnnoncesActivity : AppCompatActivity() {
@@ -82,6 +77,24 @@ class AnnoncesActivity : AppCompatActivity() {
         annonceContainer.addView(card)
     }
 
+    fun initView(mod: Int) {
+        bdd.removeAll { true }
+        DoAsync {
+            val res =
+                if (mod == 1) RequestCatalog.requeteOffreLiee(TicketManager.ticket.id.toString(), TicketManager.ticket.type)
+                else RequestCatalog.getAllOffers()
+            val list = res.getJSONArray("offres")
+            for (i in 0 until list.length()) {
+                bdd.add(JSONObject(list.getString(i)))
+            }
+        }.waitUntil()
+        annonceContainer.removeAllViews()
+        for (i in 1..10) {
+            if (bdd.size == 0) break
+            createBox()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_annonces)
@@ -90,19 +103,8 @@ class AnnoncesActivity : AppCompatActivity() {
             buttonCreate.isEnabled = false
         }
 
-        DoAsync {
-            val res = RequestCatalog.getAllOffers()
-            val list = res.getJSONArray("offres")
-            for (i in 0 until list.length()) {
-                bdd.add(JSONObject(list.getString(i)))
-            }
-            println(res)
-        }.waitUntil()
-
-        for (i in 1..10) {
-            if (bdd.size == 0) break
-            createBox()
-        }
+        var mod = 0
+        initView(mod)
 
         scrollView.viewTreeObserver.addOnScrollChangedListener {
             if (!scrollView.canScrollVertically(1)) {
@@ -113,11 +115,23 @@ class AnnoncesActivity : AppCompatActivity() {
             }
         }
 
+        myAnnonces.setOnClickListener {
+            mod = 1-mod
+            if (mod == 0) {
+                myAnnonces.text = "Mes annonces"
+            } else {
+                myAnnonces.text = "Toutes les annonces"
+            }
+            initView(mod)
+        }
+
         buttonProfil.setOnClickListener {
             if (TicketManager.ticket.type == TypeTicket.CLIENT) {
-                startActivity(Intent(this@AnnoncesActivity, ProfilClient::class.java))
+                intent.setClass(this@AnnoncesActivity, ProfilClient::class.java)
+                startActivity(intent)
             } else if (TicketManager.ticket.type == TypeTicket.REMPLACANT) {
-                startActivity(Intent(this@AnnoncesActivity, ProfilRemplacant::class.java))
+                intent.setClass(this@AnnoncesActivity, ProfilRemplacant::class.java)
+                startActivity(intent)
             } else {
                 startActivity(Intent(this@AnnoncesActivity, MainActivity::class.java))
             }

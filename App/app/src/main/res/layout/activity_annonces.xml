@@ -33,13 +33,13 @@
         android:text="Créer Annonce"
         android:textColor="#FFFFFF"
         android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonView"
+        app:layout_constraintEnd_toStartOf="@+id/myAnnonces"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonView"
+        android:id="@+id/myAnnonces"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#000000"
@@ -73,7 +73,7 @@
         android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonAnnoncesRetour"
         app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toEndOf="@+id/buttonView"
+        app:layout_constraintStart_toEndOf="@+id/myAnnonces"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

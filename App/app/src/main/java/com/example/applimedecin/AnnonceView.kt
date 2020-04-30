@@ -37,8 +37,13 @@ class AnnonceView : AppCompatActivity(){
         }
         val idOffre = extras.getString("idOffre", "-1")
         imageButton3.setOnClickListener {
-            startActivity(Intent(this@AnnonceView,AnnoncesActivity::class.java))
+            println(intent.extras)
+            intent.setClass(this@AnnonceView, AnnoncesActivity::class.java)
+            startActivity(intent)
         }
+
+        boutonValider.isEnabled = TicketManager.ticket.type == TypeTicket.REMPLACANT
+
         boutonValider.setOnClickListener {
             DoAsync {
                 RequestCatalog.saveDataPostulat("-1", idOffre, TicketManager.ticket.id.toString())
