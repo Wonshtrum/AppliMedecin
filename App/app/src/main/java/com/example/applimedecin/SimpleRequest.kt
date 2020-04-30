@@ -146,26 +146,22 @@ object RequestCatalog {
         return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
-    fun saveDataOffre(idOffre:String, idClient:String, activite:String, carteProFilename:String,
-                      description:String, dispoSec:String, horaire:String, logicielUtilise:String,
-                      retrocession:String, secretariat:String, spec:String, typeOffre:String,
-                      typePatient:String, visiteDomicile:String): JSONObject {
+    fun saveDataOffre(idOffre:String, idClient:String, periode: String, description:String,
+                      horaire:String, logicielUtilise:String, retrocession:String, typeOffre:String,
+                      typePatient:String, visiteDomicile:String, archivage: String = "0"): JSONObject {
         val data = JSONObject()
         data.put("type", "offre")
         data.put("idOffre", idOffre)
         data.put("idClient", idClient)
-        data.put("activite", activite)
-        data.put("carteProFilename", carteProFilename)
+        data.put("periode", periode)
         data.put("description", description)
-        data.put("dispoSec", dispoSec)
         data.put("horaire", horaire)
         data.put("logicielUtilise", logicielUtilise)
         data.put("retrocession", retrocession)
-        data.put("secretariat", secretariat)
-        data.put("spec", spec)
         data.put("typeOffre", typeOffre)
         data.put("typePatient", typePatient)
         data.put("visiteDomicile", visiteDomicile)
+        data.put("archivage", archivage)
         return SimpleRequest(data).addTicket().send(RequestURL.SAVE).toJSON()
     }
 
