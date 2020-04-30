@@ -101,6 +101,7 @@ class AnnoncesActivity : AppCompatActivity() {
 
         if (TicketManager.ticket.type != TypeTicket.CLIENT) {
             buttonCreate.isEnabled = false
+            buttonCreate.setTextColor(Color.DKGRAY)
         }
 
         var mod = 0
@@ -136,6 +137,7 @@ class AnnoncesActivity : AppCompatActivity() {
                 startActivity(Intent(this@AnnoncesActivity, MainActivity::class.java))
             }
         }
+
         buttonAnnoncesRetour.setOnClickListener {
             TicketManager.disconnect()
             startActivity(Intent(this@AnnoncesActivity, MainActivity::class.java))

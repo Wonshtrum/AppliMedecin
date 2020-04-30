@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Etape 5 sur 5"
+        android:text="Etape 3 sur 3"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
         android:textStyle="bold"

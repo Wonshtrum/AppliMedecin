@@ -8,7 +8,7 @@ import java.util.HashMap
 class SimpleRequest(private val content: JSONObject = JSONObject(),
                     private val ticket: JSONObject = JSONObject(),
                     private var result: String = "",
-                    private var success: Boolean = false) {
+                    var success: Boolean = false) {
 
     fun put(key: String, value: String) {
         content.put(key, value)

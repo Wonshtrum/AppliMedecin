@@ -10,12 +10,22 @@ class ConnexionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connexion)
+
+        val res = DoAsync {
+            SimpleRequest().send("/").success
+        }.waitUntil()
+        if (!res!!) {
+            error.text = "server down"
+        }
+
         buttonConnexion.setOnClickListener{
             val newTicket = DoAsync {
                 RequestCatalog.connect(editTextMail.text.toString(), editTextMotDePasse.text.toString())
             }.waitUntil()
             if (TicketManager.connect(newTicket)) {
                 startActivity(Intent(this@ConnexionActivity, AnnoncesActivity::class.java))
+            } else {
+                editTextMotDePasse.setText("")
             }
         }
         retour.setOnClickListener{

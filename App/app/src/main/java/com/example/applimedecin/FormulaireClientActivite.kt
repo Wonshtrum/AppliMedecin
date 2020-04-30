@@ -16,6 +16,9 @@ class FormulaireClientActivite: AppCompatActivity() {
         val switch2 = findViewById<Switch>(R.id.switchSecrétariat);
         val textSec = findViewById<TextView>(R.id.textSecrétariat);
         val spinnerSec = findViewById<Spinner>(R.id.spinnerSecrétariat);
+
+        textSec.setEnabled(false)
+        spinnerSec.setEnabled(false)
 0
         fun isValid() {
             if (!editChamps1.getText().toString().trim().isEmpty()) {
@@ -35,7 +38,7 @@ class FormulaireClientActivite: AppCompatActivity() {
             if (isChecked) {
                 textSec.setEnabled(true)
                 spinnerSec.setEnabled(true)
-            }else{
+            } else {
                 textSec.setEnabled(false)
                 spinnerSec.setEnabled(false)
             }

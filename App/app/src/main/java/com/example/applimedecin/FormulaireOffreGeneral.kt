@@ -24,8 +24,8 @@ class FormulaireOffreGeneral : AppCompatActivity(){
         }
 
         offreVisite.setOnClickListener {
-            offreRayon.isEnabled = offreVisite.isEnabled
-            offreTextRayon.isEnabled = offreVisite.isEnabled
+            offreRayon.isEnabled = offreVisite.isChecked
+            offreTextRayon.isEnabled = offreVisite.isChecked
         }
 
         editChamps1.addTextChangedListener(object : TextWatcher {

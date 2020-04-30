@@ -8,6 +8,7 @@ object TicketManager {
         ticket = Ticket(TypeTicket.EMPTY, -1, -1)
     }
     fun connect(json: JSONObject?): Boolean {
+        println(json)
         return if (json == null || (json.getStringD("type") != TypeTicket.CLIENT && json.getStringD("type") != TypeTicket.REMPLACANT)) {
             false
         } else if (json.has("type") && json.has("id") && json.has("security")) {
