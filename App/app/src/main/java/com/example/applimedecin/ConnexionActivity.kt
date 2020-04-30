@@ -14,7 +14,7 @@ class ConnexionActivity : AppCompatActivity() {
         val res = DoAsync {
             SimpleRequest().send("/").success
         }.waitUntil()
-        if (!res!!) {
+        if (res == null || !res) {
             error.text = "server down"
         }
 
